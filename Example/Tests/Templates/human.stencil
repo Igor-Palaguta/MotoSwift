@@ -1,0 +1,5 @@
+import Foundation
+
+@objc({{ class }})
+class {{ class }}: _{{ class }} {
+}

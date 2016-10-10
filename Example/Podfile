@@ -1,0 +1,15 @@
+platform :osx, '10.10'
+use_frameworks!
+
+target 'motoswift' do
+   pod 'Commander'
+   pod 'MoGen', :path => '../'
+end
+
+target 'UnitTests' do
+   inherit! :search_paths
+
+   pod 'Quick'
+   pod 'Nimble'
+   pod 'MoGen', :path => '../'
+end
