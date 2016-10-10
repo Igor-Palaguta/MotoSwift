@@ -33,16 +33,11 @@ public final class ModelParser {
          }
          guard let plist = NSDictionary(contentsOfFile: currentVersionFile),
             let versionFile = plist["_XCCurrentVersionName"] as? String else {
-               throw ModelParserError.missedCurrentVersionKey
+               throw MoGenError("_XCCurrentVersionName key is absent in: '\(currentVersionFile)'")
          }
          return url.appendingPathComponent(versionFile).path
-      default:
-         throw ModelParserError.wrongModelType
+      case let other:
+         throw MoGenError("Invalid model type: '\(other)'")
       }
    }
-}
-
-public enum ModelParserError: Error {
-   case missedCurrentVersionKey
-   case wrongModelType
 }
