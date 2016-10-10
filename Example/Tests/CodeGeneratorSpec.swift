@@ -1,5 +1,7 @@
 import Quick
 import Nimble
+import Stencil
+import PathKit
 @testable import MoGen
 
 class CodeGeneratorSpec: QuickSpec {
@@ -8,15 +10,23 @@ class CodeGeneratorSpec: QuickSpec {
          it("generateCode") {
             let modelPath = Bundle(for: type(of: self))
                .path(forResource: "TypesModel", ofType: "xcdatamodeld")!
+
             let model = try! ModelParser().parseModel(fromPath: modelPath)
             let machineTemplatePath = Bundle(for: type(of: self)).path(forResource: "machine", ofType: "stencil")!
-            let humanTemplatePath = Bundle(for: type(of: self)).path(forResource: "human", ofType: "stencil")!
-            let codeGenerator = try! CodeGenerator(language: .Swift, machineTemplatePath: machineTemplatePath, humanTemplatePath: humanTemplatePath)
+            let machineTemplate = try! Template(path: Path(machineTemplatePath))
 
-            try! codeGenerator.generateCode(for: model) {
-               entity, code in
-               print(code.machine)
-               print(code.human)
+            let humanTemplatePath = Bundle(for: type(of: self)).path(forResource: "human", ofType: "stencil")!
+            let humanTemplate = try! Template(path: Path(humanTemplatePath))
+
+            for entity in model.entities {
+               guard entity.className != nil else {
+                  continue
+               }
+               let machine = try! machineTemplate.render(Context(dictionary: model.templateContext(for: entity)))
+               print(machine)
+
+               let human = try! humanTemplate.render(Context(dictionary: model.templateContext(for: entity)))
+               print(human)
             }
          }
       }

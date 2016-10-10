@@ -1,17 +1,17 @@
 import Foundation
 
-public enum Language {
+enum Language {
    case Swift
    case ObjC
 
    func type(for type: AttributeType, scalar: Bool) throws -> String {
       switch (self, type, scalar) {
+      case (_, .Binary, _):
+         return "NSData"
       case (.Swift, .Boolean, true):
          return "Bool"
       case (.ObjC, .Boolean, true):
          return "BOOL"
-      case (_, .Binary, _):
-         return "NSData"
       case (_, .Date, _):
          return "NSDate"
       case (_, .Decimal, _):
@@ -49,8 +49,6 @@ public enum Language {
            (_, .Integer32, false),
            (_, .Integer64, false):
          return "NSNumber"
-      default:
-         throw XMLParseError()
       }
    }
 }

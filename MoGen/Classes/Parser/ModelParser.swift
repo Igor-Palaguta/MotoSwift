@@ -1,33 +1,8 @@
 import Foundation
 import SWXMLHash
 
-private func currentVersion(forModelPath modelPath: String) throws -> String {
-   let url = URL(fileURLWithPath: modelPath, isDirectory: true)
-   switch url.pathExtension {
-   case "xcdatamodel":
-      return modelPath
-   case "xcdatamodeld":
-      print(url)
-      let currentVersionFile = url.appendingPathComponent(".xccurrentversion").path
-      print(currentVersionFile)
-      guard FileManager.default.fileExists(atPath: currentVersionFile) else {
-         return url
-            .appendingPathComponent(url.lastPathComponent)
-            .deletingPathExtension()
-            .appendingPathExtension("xcdatamodel")
-            .path
-      }
-      guard let plist = NSDictionary(contentsOfFile: currentVersionFile),
-         let versionFile = plist["_XCCurrentVersionName"] as? String else {
-            throw XMLParseError()
-      }
-      return url.appendingPathComponent(versionFile).path
-   default:
-      throw XMLParseError()
-   }
-}
-
 public final class ModelParser {
+
    public init() {
    }
 
@@ -41,4 +16,33 @@ public final class ModelParser {
       let entities: [Entity] = try xml["model"]["entity"].map { try Entity(xml: $0) }
       return Model(entities)
    }
+
+   private func currentVersion(forModelPath modelPath: String) throws -> String {
+      let url = URL(fileURLWithPath: modelPath, isDirectory: true)
+      switch url.pathExtension {
+      case "xcdatamodel":
+         return modelPath
+      case "xcdatamodeld":
+         let currentVersionFile = url.appendingPathComponent(".xccurrentversion").path
+         guard FileManager.default.fileExists(atPath: currentVersionFile) else {
+            return url
+               .appendingPathComponent(url.lastPathComponent)
+               .deletingPathExtension()
+               .appendingPathExtension("xcdatamodel")
+               .path
+         }
+         guard let plist = NSDictionary(contentsOfFile: currentVersionFile),
+            let versionFile = plist["_XCCurrentVersionName"] as? String else {
+               throw ModelParserError.missedCurrentVersionKey
+         }
+         return url.appendingPathComponent(versionFile).path
+      default:
+         throw ModelParserError.wrongModelType
+      }
+   }
+}
+
+public enum ModelParserError: Error {
+   case missedCurrentVersionKey
+   case wrongModelType
 }

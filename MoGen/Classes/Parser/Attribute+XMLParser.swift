@@ -26,7 +26,7 @@ private let typesMapping: [String: AttributeType] = ["Boolean": .Boolean,
 extension AttributeType {
    fileprivate init(stringValue: String) throws {
       guard let type = typesMapping[stringValue] else {
-         throw XMLParseError()
+         throw MoGenError("Unexpected attribute type: '\(stringValue)'")
       }
       self = type
    }

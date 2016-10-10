@@ -32,6 +32,5 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'MoGen/Classes/**/*'
 
-  s.dependency 'Stencil'
   s.dependency 'SWXMLHash'
 end

@@ -9,6 +9,7 @@ end
 target 'UnitTests' do
    inherit! :search_paths
 
+   pod 'Stencil'
    pod 'Quick'
    pod 'Nimble'
    pod 'MoGen', :path => '../'
