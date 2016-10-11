@@ -1,11 +1,9 @@
-import Quick
-import Nimble
-/*import Stencil
-import PathKit
-@testable import MoGen
+import Foundation
+import Stencil
 
+// Thanks to https://github.com/AliSoftware
 // Workaround until Stencil fixes https://github.com/kylef/Stencil/issues/22
-class GenumTemplate: Template {
+final class GenumTemplate: Template {
    public override init(templateString: String) {
       let templateStringWithMarkedNewlines = templateString
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
@@ -36,32 +34,3 @@ class GenumTemplate: Template {
       return unmarkedNewlines
    }
 }
-
-class CodeGeneratorSpec: QuickSpec {
-   override func spec() {
-      describe("CodeGenerator") {
-         it("generateCode") {
-            let modelPath = Bundle(for: type(of: self))
-               .path(forResource: "TypesModel", ofType: "xcdatamodeld")!
-
-            let model = try! ModelParser().parseModel(fromPath: modelPath)
-            let machineTemplatePath = Bundle(for: type(of: self)).path(forResource: "machine", ofType: "stencil")!
-            let machineTemplate = try! GenumTemplate(path: Path(machineTemplatePath))
-
-            let humanTemplatePath = Bundle(for: type(of: self)).path(forResource: "human", ofType: "stencil")!
-            let humanTemplate = try! GenumTemplate(path: Path(humanTemplatePath))
-
-            for entity in model.entities {
-               guard entity.className != nil else {
-                  continue
-               }
-               let machine = try! machineTemplate.render(Context(dictionary: model.templateContext(for: entity)))
-               print(machine)
-
-               let human = try! humanTemplate.render(Context(dictionary: model.templateContext(for: entity)))
-               print(human)
-            }
-         }
-      }
-   }
-}*/

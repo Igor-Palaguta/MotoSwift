@@ -1,6 +1,6 @@
 import Foundation
 
-public struct MoGenError: Error, CustomStringConvertible {
+public struct MotoSwiftError: Error, CustomStringConvertible {
    let message: String
    let file: String
    let line: Int
@@ -11,6 +11,6 @@ public struct MoGenError: Error, CustomStringConvertible {
    }
 
    public var description: String {
-      return "\(MoGenError.self): \(self.message), \(self.file):\(self.line)"
+      return self.message
    }
 }

@@ -4,6 +4,12 @@ extension Model {
    public func templateContext(for entity: Entity) throws -> [String: Any] {
       return try entity.templateContext(language: .Swift, model: self)
    }
+
+   public func templateContext() throws -> [String: Any] {
+      let entitiesContexts = try self.entities.map { try $0.templateContext(language: .Swift, model: self) }
+
+      return ["entities": entitiesContexts]
+   }
 }
 
 protocol TemplateContext {
