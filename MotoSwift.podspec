@@ -22,7 +22,7 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.9'
 
-  s.source_files = 'Source/MotoSwiftFramework/Classes/**/*'
+  s.source_files = 'Source/MotoSwiftFramework/**/*'
 
   s.dependency 'SWXMLHash'
 end
