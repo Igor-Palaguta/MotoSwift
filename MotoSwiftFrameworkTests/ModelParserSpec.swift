@@ -1,6 +1,6 @@
 import Quick
 import Nimble
-@testable import MoGen
+@testable import MotoSwiftFramework
 
 class ModelParserSpec: QuickSpec {
    override func spec() {
