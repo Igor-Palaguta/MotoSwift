@@ -1,5 +1,5 @@
 import Foundation
 
 @objc(NumericTypesClass)
-class NumericTypesClass: _NumericTypesClass {
+public class NumericTypesClass: _NumericTypesClass {
 }

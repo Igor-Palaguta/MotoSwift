@@ -1,5 +1,5 @@
 import Foundation
 
 @objc(ScalarTypesClass)
-class ScalarTypesClass: _ScalarTypesClass {
+public class ScalarTypesClass: _ScalarTypesClass {
 }

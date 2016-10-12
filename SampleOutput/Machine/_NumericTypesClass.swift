@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-enum NumericTypesClassAttributes: String {
+public enum NumericTypesClassAttributes: String {
    case boolean
    case decimal
    case double
@@ -11,23 +11,23 @@ enum NumericTypesClassAttributes: String {
    case int64
 }
 
-enum NumericTypesClassRelationships: String {
+public enum NumericTypesClassRelationships: String {
    case scalars
 }
 
 
-class _NumericTypesClass: NSManagedObject {
-   class var entityName: String {
+public class _NumericTypesClass: NSManagedObject {
+   public class var entityName: String {
       return "NumericTypes"
    }
 
-   @NSManaged var boolean: NSNumber?
-   @NSManaged var decimal: NSDecimalNumber?
-   @NSManaged var double: NSNumber?
-   @NSManaged var float: NSNumber?
-   @NSManaged var int16: NSNumber?
-   @NSManaged var int32: NSNumber?
-   @NSManaged var int64: NSNumber?
+   @NSManaged public var boolean: NSNumber?
+   @NSManaged public var decimal: NSDecimalNumber?
+   @NSManaged public var double: NSNumber?
+   @NSManaged public var float: NSNumber?
+   @NSManaged public var int16: NSNumber?
+   @NSManaged public var int32: NSNumber?
+   @NSManaged public var int64: NSNumber?
 
-   @NSManaged var scalars: ScalarTypesClass
+   @NSManaged public var scalars: ScalarTypesClass
 }

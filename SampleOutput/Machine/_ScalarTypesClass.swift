@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-enum ScalarTypesClassAttributes: String {
+public enum ScalarTypesClassAttributes: String {
    case boolean
    case double
    case float
@@ -10,15 +10,15 @@ enum ScalarTypesClassAttributes: String {
    case int64
 }
 
-enum ScalarTypesClassRelationships: String {
+public enum ScalarTypesClassRelationships: String {
    case numerics
 }
 
-enum ScalarTypesClassFetchedProperties: String {
+public enum ScalarTypesClassFetchedProperties: String {
    case eq_true
    case gt_100
 
-   var predicateString: String {
+   public var predicateString: String {
       switch self {
       case .eq_true:
          return "boolean == YES"
@@ -27,7 +27,7 @@ enum ScalarTypesClassFetchedProperties: String {
       }
    }
 
-   var entityName: String {
+   public var entityName: String {
       switch self {
       case .eq_true:
          return "ScalarTypes"
@@ -37,17 +37,17 @@ enum ScalarTypesClassFetchedProperties: String {
    }
 }
 
-class _ScalarTypesClass: NSManagedObject {
-   class var entityName: String {
+public class _ScalarTypesClass: NSManagedObject {
+   public class var entityName: String {
       return "ScalarTypes"
    }
 
-   @NSManaged var boolean: Bool
-   @NSManaged var double: Double
-   @NSManaged var float: Float
-   @NSManaged var int16: Int16
-   @NSManaged var int32: Int32
-   @NSManaged var int64: Int64
+   @NSManaged public var boolean: Bool
+   @NSManaged public var double: Double
+   @NSManaged public var float: Float
+   @NSManaged public var int16: Int16
+   @NSManaged public var int32: Int32
+   @NSManaged public var int64: Int64
 
-   @NSManaged var numerics: NumericTypesClass
+   @NSManaged public var numerics: NumericTypesClass
 }

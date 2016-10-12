@@ -1,7 +1,7 @@
 import Foundation
 import CoreData
 
-enum AllTypesClassAttributes: String {
+public enum AllTypesClassAttributes: String {
    case data
    case date
    case string
@@ -10,14 +10,14 @@ enum AllTypesClassAttributes: String {
 
 
 
-class _AllTypesClass: NumericTypesClass {
-   override class var entityName: String {
+public class _AllTypesClass: NumericTypesClass {
+   public override class var entityName: String {
       return "AllTypes"
    }
 
-   @NSManaged var data: NSData?
-   @NSManaged var date: NSDate?
-   @NSManaged var string: String?
-   @NSManaged var transformable: NSObject?
+   @NSManaged public var data: NSData?
+   @NSManaged public var date: NSDate?
+   @NSManaged public var string: String?
+   @NSManaged public var transformable: NSObject?
 
 }
