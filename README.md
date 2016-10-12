@@ -35,8 +35,10 @@ MotoSwift uses [Stencil](https://github.com/kylef/Stencil) as template language
 
 `motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/machine.stencil --output ./SampleOutput/Machine --rewrite --file-mask "_{{class}}.swift"`
 
+[SampleOutput/Machine](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Machine)
+
 * Generates human files:
 
 `motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/human.stencil --output ./SampleOutput/Human --no-rewrite --file-mask "{{class}}.swift"`
 
-[SampleOutput](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput)
+[SampleOutput/Human](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Human)
