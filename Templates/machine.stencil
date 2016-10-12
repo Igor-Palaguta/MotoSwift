@@ -49,7 +49,7 @@ class _{{ class }}: {% if parentClass %}{{ parentClass }}{% else %}NSManagedObje
    }
 
    {% for attribute in attributes %}
-   @NSManaged var {{ attribute.name }}: {{ attribute.type }}{% ifnot attribute.isScalar %}{% if attribute.isOptional %}?{% endif %}{% endif %}
+   @NSManaged var {{ attribute.name }}: {% if attribute.isScalar %}{{ attribute.scalarType }}{% else %}{{ attribute.type }}{% if attribute.isOptional %}?{% endif %}{% endif %}
    {% endfor %}
 
    {% for relationship in relationships %}

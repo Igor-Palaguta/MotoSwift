@@ -13,7 +13,7 @@ let main = Group {
       Option<String>("file-mask", "", description: "File name mask, e.g: \"_\(classPlaceholder).swift\"."),
       Option<String>("template", "", description: "Path to entity template."),
       Option<String>("output", "", description: "Output directory."),
-      Flag("rewrite", description: "Rewrite if exists", default: false)
+      Flag("rewrite", description: "Rewrite file if exists", default: false)
    ) { modelPath, fileMask, templatePath, outputDir, rewrite in
       let modelPath = try requiredValue(ofArgument: "model", withValue: modelPath)
       let fileMask = try requiredValue(ofArgument: "file-mask", withValue: fileMask)
@@ -37,8 +37,9 @@ let main = Group {
          if FileManager.default.fileExists(atPath: entityFileUrl.path) && !rewrite {
             continue
          }
-         let template = try GenumTemplate(path: Path(templatePath))
-         let code = try template.render(Context(dictionary: try model.templateContext(for: entity)))
+         let template = try MotoTemplate(path: Path(templatePath))
+         let code = try template.render(Context(dictionary: try model.templateContext(for: entity),
+                                                namespace: MotoNamespace()))
          try code.write(to: entityFileUrl, atomically: true, encoding: String.Encoding.utf8)
       }
    }
@@ -50,13 +51,14 @@ let main = Group {
       let modelPath = try requiredValue(ofArgument: "model", withValue: modelPath)
       let templatePath = try requiredValue(ofArgument: "template", withValue: templatePath)
       let model = try ModelParser().parseModel(fromPath: modelPath)
-      let template = try GenumTemplate(path: Path(templatePath))
-      let code = try template.render(Context(dictionary: try model.templateContext()))
+      let template = try MotoTemplate(path: Path(templatePath))
+      let code = try template.render(Context(dictionary: try model.templateContext(),
+                                             namespace: MotoNamespace()))
       print(code)
    }
 
-   $0.addCommand("entity", "Generates for every entity separate file", entitiesCommand)
-   $0.addCommand("model", "Prints all model to output", modelCommand)
+   $0.addCommand("entity", "Renders every entity to separate file", entitiesCommand)
+   $0.addCommand("model", "Prints rendered model to one output", modelCommand)
 }
 
 main.run()

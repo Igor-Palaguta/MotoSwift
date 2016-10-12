@@ -39,10 +39,11 @@ extension Entity: TemplateContext {
 
 extension Attribute: TemplateContext {
    func templateContext(language: Language, model: Model) throws -> [String: Any] {
-      let context: [String: Any] = ["name": self.name,
-                                    "type": try language.type(for: self.type, scalar: self.isScalar),
+      var context: [String: Any] = ["name": self.name,
+                                    "type": language.type(for: self.type),
                                     "isOptional": self.isOptional,
                                     "isScalar": self.isScalar]
+      context["scalarType"] = language.scalarType(for: self.type)
       return context + self.userInfo
    }
 }
@@ -54,10 +55,7 @@ extension Relationship: TemplateContext {
                                     "isOptional": self.isOptional,
                                     "toMany": self.toMany,
                                     "isOrdered": self.isOrdered]
-
-      if let className = model.index[self.entityName]?.className {
-         context["class"] = className
-      }
+      context["class"] = model.index[self.entityName]?.className
       return context + self.userInfo
    }
 }
@@ -67,10 +65,7 @@ extension FetchedProperty: TemplateContext {
       var context: [String: Any] = ["name": self.name,
                                     "entityName": self.entityName,
                                     "predicateString": self.predicateString]
-
-      if let className = model.index[self.entityName]?.className {
-         context["class"] = className
-      }
+      context["class"] = model.index[self.entityName]?.className
       return context + self.userInfo
    }
 }
