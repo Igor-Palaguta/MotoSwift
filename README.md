@@ -4,14 +4,14 @@ Converts Core Data model to Swift.
 ## Installation
 Clone or download project.
 
-Run Swift Package Manager build command:
-`swift build --configuration release`
+Build motoswift with:
+`make bundle`
 
-Now you can find MotoSwift in `./.build/release/motoswift`
+Now you can find motoswift in `./motoswift/bin`
 
 ## Usage
 
-* **motoswift entity** - Renders every entity to separate file
+* **motoswift entity** - Applies entity template and renders every entity to separate file
 
   Options:
     * --model - Path to CoreData model.
@@ -20,7 +20,7 @@ Now you can find MotoSwift in `./.build/release/motoswift`
     * --output - Output directory.
     * --rewrite - Rewrite if exists
 
-* **motoswift model** - Prints rendered model to one output
+* **motoswift model** - Applies model template and prints result to output
 
   Options:
     * --model - Path to CoreData model.
