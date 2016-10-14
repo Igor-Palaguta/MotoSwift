@@ -22,6 +22,8 @@ let main = Group {
       }
 
       let templatePath = try requiredValue(ofArgument: "template", withValue: templatePath)
+      let template = try MotoTemplate(path: Path(templatePath))
+
       let outputDir = try requiredValue(ofArgument: "output", withValue: outputDir)
       let model = try ModelParser().parseModel(fromPath: modelPath)
 
@@ -34,12 +36,20 @@ let main = Group {
          }
          let fileName = fileMask.replacingOccurrences(of: classPlaceholder, with: className)
          let entityFileUrl = outputUrl.appendingPathComponent(fileName)
-         if FileManager.default.fileExists(atPath: entityFileUrl.path) && !rewrite {
+         let fileExists = FileManager.default.fileExists(atPath: entityFileUrl.path)
+         if fileExists && !rewrite {
             continue
          }
-         let template = try MotoTemplate(path: Path(templatePath))
+
          let code = try template.render(Context(dictionary: try model.templateContext(for: entity),
                                                 namespace: MotoNamespace()))
+
+         if fileExists,
+            let currentCode = try? String(contentsOf: entityFileUrl, encoding: String.Encoding.utf8),
+            currentCode == code {
+            continue
+         }
+
          try code.write(to: entityFileUrl, atomically: true, encoding: String.Encoding.utf8)
       }
    }
