@@ -10,6 +10,9 @@ BUILD_PATH=./.build/$(BUILD_CONFIGURATION)/$(EXECUTABLE_NAME)
 
 DEFAULT_RPATH=`dirname \`dirname \\\`xcrun -find swift-stdlib-tool\\\`\``/lib/swift/macosx
 
+lint:
+	cd ./Source; swiftlint
+
 build:
 	swift build --configuration $(BUILD_CONFIGURATION)
 

@@ -25,6 +25,8 @@ Now you can find motoswift in `./motoswift/bin`
   Options:
     * --model - Path to CoreData model.
     * --template - Path to model template.
+    * --output - Output file path. If missed prints to console
+    * --rewrite - Rewrite file if exists.
 
 ## Additional documentation
 MotoSwift uses [Stencil](https://github.com/kylef/Stencil) as template language

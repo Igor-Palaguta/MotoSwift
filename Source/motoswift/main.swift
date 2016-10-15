@@ -1,74 +1,12 @@
 import Foundation
-import MotoSwiftFramework
-import Stencil
-import PathKit
 import Commander
 
+private let MotoSwiftVersion = "0.0.1"
+
 let main = Group {
-
-   let classPlaceholder = "{{class}}"
-
-   let entitiesCommand = command(
-      Option<String>("model", "", description: "Path to CoreData model."),
-      Option<String>("file-mask", "", description: "File name mask, e.g: \"_\(classPlaceholder).swift\"."),
-      Option<String>("template", "", description: "Path to entity template."),
-      Option<String>("output", "", description: "Output directory."),
-      Flag("rewrite", description: "Rewrite file if exists", default: false)
-   ) { modelPath, fileMask, templatePath, outputDir, rewrite in
-      let modelPath = try requiredValue(ofArgument: "model", withValue: modelPath)
-      let fileMask = try requiredValue(ofArgument: "file-mask", withValue: fileMask)
-      if !fileMask.contains(classPlaceholder) {
-         throw ArgumentError.invalidFileNameFormat(actual: fileMask, placeholder: classPlaceholder)
-      }
-
-      let templatePath = try requiredValue(ofArgument: "template", withValue: templatePath)
-      let template = try MotoTemplate(path: Path(templatePath))
-
-      let outputDir = try requiredValue(ofArgument: "output", withValue: outputDir)
-      let model = try ModelParser().parseModel(fromPath: modelPath)
-
-      let outputUrl = URL(fileURLWithPath: outputDir, isDirectory: true)
-      try FileManager.default.createDirectory(at: outputUrl, withIntermediateDirectories: true)
-
-      for entity in model.entities {
-         guard let className = entity.className else {
-            continue
-         }
-         let fileName = fileMask.replacingOccurrences(of: classPlaceholder, with: className)
-         let entityFileUrl = outputUrl.appendingPathComponent(fileName)
-         let fileExists = FileManager.default.fileExists(atPath: entityFileUrl.path)
-         if fileExists && !rewrite {
-            continue
-         }
-
-         let code = try template.render(Context(dictionary: try model.templateContext(for: entity),
-                                                namespace: MotoNamespace()))
-
-         if fileExists,
-            let currentCode = try? String(contentsOf: entityFileUrl, encoding: String.Encoding.utf8),
-            currentCode == code {
-            continue
-         }
-
-         try code.write(to: entityFileUrl, atomically: true, encoding: String.Encoding.utf8)
-      }
-   }
-
-   let modelCommand = command(
-      Option<String>("model", "", description: "Path to CoreData model."),
-      Option<String>("template", "", description: "Path to model template.")
-   ) { modelPath, templatePath in
-      let modelPath = try requiredValue(ofArgument: "model", withValue: modelPath)
-      let templatePath = try requiredValue(ofArgument: "template", withValue: templatePath)
-      let model = try ModelParser().parseModel(fromPath: modelPath)
-      let template = try MotoTemplate(path: Path(templatePath))
-      let code = try template.render(Context(dictionary: try model.templateContext(),
-                                             namespace: MotoNamespace()))
-      print(code)
-   }
-
-   $0.addCommand("entity", "Renders every entity to separate file", entitiesCommand)
-   $0.addCommand("model", "Prints rendered model to one output", modelCommand)
+   $0.addCommand("entity", "Applies entity template and renders every entity to separate file", entityCommand())
+   $0.addCommand("model", "Applies model template and prints code to output", modelCommand())
+   $0.addCommand("version", nil, command { print(MotoSwiftVersion) })
 }
 
 main.run()
