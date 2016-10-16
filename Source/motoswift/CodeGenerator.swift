@@ -41,7 +41,8 @@ final class CodeGenerator {
       if let file = file, !file.isEmpty {
          let fileUrl = URL(fileURLWithPath: file, isDirectory: false)
          fileOutput = .File(url: fileUrl)
-         try FileManager.default.createDirectory(at: fileUrl.deletingLastPathComponent(), withIntermediateDirectories: true)
+         try FileManager.default.createDirectory(at: fileUrl.deletingLastPathComponent(),
+                                                 withIntermediateDirectories: true)
       } else {
          fileOutput = .Console
       }

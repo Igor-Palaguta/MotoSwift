@@ -31,9 +31,10 @@ public final class ModelParser {
                .appendingPathExtension("xcdatamodel")
                .path
          }
+         let versionKey = "_XCCurrentVersionName"
          guard let plist = NSDictionary(contentsOfFile: currentVersionFile),
-            let versionFile = plist["_XCCurrentVersionName"] as? String else {
-               throw MotoSwiftError("_XCCurrentVersionName key is absent in: '\(currentVersionFile)'")
+            let versionFile = plist[versionKey] as? String else {
+               throw MotoSwiftError("\(versionKey) is absent in: '\(currentVersionFile)'")
          }
          return url.appendingPathComponent(versionFile).path
       default:

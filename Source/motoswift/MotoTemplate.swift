@@ -24,9 +24,10 @@ final class MotoTemplate: Template {
             fatalError("Regular Expression pattern error: \(error)")
          }
       }()
+      let textRange = NSRange(location: 0, length: str.utf16.count)
       let compact = extraLinesRE.stringByReplacingMatches(in: str,
                                                           options: [],
-                                                          range: NSRange(location: 0, length: str.utf16.count),
+                                                          range: textRange,
                                                           withTemplate: "\n")
       let unmarkedNewlines = compact
          .replacingOccurrences(of: "\n\u{000b}\n", with: "\n\n")

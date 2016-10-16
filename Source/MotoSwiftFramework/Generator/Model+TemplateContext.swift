@@ -6,7 +6,9 @@ extension Model {
    }
 
    public func templateContext() throws -> [String: Any] {
-      let entitiesContexts = try self.entities.map { try $0.templateContext(language: .Swift, model: self) }
+      let entitiesContexts = try self.entities.map {
+         try $0.templateContext(language: .Swift, model: self)
+      }
 
       return ["entities": entitiesContexts]
    }

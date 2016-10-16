@@ -15,7 +15,7 @@ func modelCommand() -> CommandType {
       let templatePath = try requiredValue(ofArgument: "template", withValue: templatePath)
       let model = try ModelParser().parseModel(fromPath: modelPath)
       let template = try MotoTemplate(path: Path(templatePath))
-      let codeGenerator = CodeGenerator()
-      try codeGenerator.render(with: template, model: model, toFile: output, rewrite: rewrite)
+      let generator = CodeGenerator()
+      try generator.render(with: template, model: model, toFile: output, rewrite: rewrite)
    }
 }
