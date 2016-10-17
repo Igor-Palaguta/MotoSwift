@@ -2,12 +2,15 @@
 Converts Core Data model to Swift.
 
 ## Installation
+1. Install MotoSwift by downloading MotoSwift.pkg from the [latest GitHub release](https://github.com/Igor-Palaguta/MotoSwift/releases/latest) and running it.
+
+2. From sources.
+
 Clone or download project.
 
-Build motoswift with:
-`make bundle`
+Run `make install`
 
-Now you can find motoswift in `./motoswift/bin`
+If you need all components in one folder run `make bundle`. Now you can copy whole ```motoswift``` folder, and run ```motoswift/bin/motoswift``` from any place
 
 ## Usage
 

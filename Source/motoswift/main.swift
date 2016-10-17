@@ -7,10 +7,10 @@ private final class Application {
    func run() {
       let main = Group {
          $0.addCommand("entity",
-                       "Applies entity template and renders every entity to separate file",
+                       "Apply entity template and render every entity to separate file",
                        entityCommand())
          $0.addCommand("model",
-                       "Applies model template and prints code to output",
+                       "Apply model template and print code to output or file",
                        modelCommand())
          $0.addCommand("version",
                        "Display the current version of MotoSwift",
