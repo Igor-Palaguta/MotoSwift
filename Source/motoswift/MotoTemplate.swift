@@ -1,5 +1,6 @@
 import Foundation
 import Stencil
+import PathKit
 
 // Thanks to https://github.com/AliSoftware
 // Workaround until Stencil fixes https://github.com/kylef/Stencil/issues/22
@@ -9,6 +10,10 @@ final class MotoTemplate: Template {
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
       super.init(templateString: templateStringWithMarkedNewlines)
+   }
+
+   public convenience init(path:Path) throws {
+      self.init(templateString: try path.read())
    }
 
    public override func render(_ context: Context? = nil) throws -> String {

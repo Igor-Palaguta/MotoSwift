@@ -5,7 +5,7 @@ BUNDLE_TEMPLATES_PATH=$(BUNDLE_PATH)/templates
 BUNDLE_BIN_PATH=$(BUNDLE_PATH)/bin
 BUNDLE_LIB_PATH=$(BUNDLE_PATH)/lib
 
-BUILD_CONFIGURATION=debug
+BUILD_CONFIGURATION=release
 BUILD_PATH=./.build/$(BUILD_CONFIGURATION)/$(EXECUTABLE_NAME)
 
 DEFAULT_RPATH=`dirname \`dirname \\\`xcrun -find swift-stdlib-tool\\\`\``/lib/swift/macosx
