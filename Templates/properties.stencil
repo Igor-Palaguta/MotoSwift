@@ -2,8 +2,12 @@ import Foundation
 import CoreData
 
 extension {{ class }} {
+   public {% if parentClass %}override {% endif %}class var entityName: String {
+      return "{{ name }}"
+   }
+
    @nonobjc public class func fetchRequest() -> NSFetchRequest<{{ class }}> {
-       return NSFetchRequest<{{ class }}>(entityName: "{{ name }}")
+       return NSFetchRequest<{{ class }}>(entityName: self.entityName)
    }
 
    {% for attribute in attributes %}

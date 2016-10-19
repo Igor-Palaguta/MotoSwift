@@ -1,4 +1,3 @@
-import XCTest
 import Foundation
 import Spectre
 @testable import MotoSwiftFramework
@@ -10,7 +9,7 @@ private func path(forResource resource: String, ofType type: String) -> String {
          .appendingPathComponent(relativePath)
          .path
    #else
-      return Bundle(for: type(of: ModelParserTests.self)).path(forResource: resource, ofType: type)
+      return Bundle(for: MotoSwiftTests.self).path(forResource: resource, ofType: type)!
    #endif
 }
 
