@@ -2,17 +2,6 @@ import Foundation
 import Spectre
 @testable import MotoSwiftFramework
 
-private func path(forResource resource: String, ofType type: String) -> String {
-   #if SWIFT_PACKAGE
-      let relativePath = "Tests/MotoSwiftFrameworkTests/Resources/\(resource).\(type)"
-      return URL(fileURLWithPath: FileManager.default.currentDirectoryPath)
-         .appendingPathComponent(relativePath)
-         .path
-   #else
-      return Bundle(for: MotoSwiftTests.self).path(forResource: resource, ofType: type)!
-   #endif
-}
-
 private func test(typeModel model: Model) throws {
    try expect(model.entities.count) == 3
    let allTypesEntity = model.index["AllTypes"]!
@@ -80,14 +69,14 @@ private func test(typeModel model: Model) throws {
 func testModelParser() {
    describe("ModelParser") {
       $0.it("parses non versioned model") {
-         let modelPath = URL(fileURLWithPath: path(forResource: "TypesModel", ofType: "xcdatamodeld"))
+         let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld")
             .appendingPathComponent("TypesModel.xcdatamodel")
             .path
          try test(typeModel: try ModelParser().parseModel(fromPath: modelPath))
       }
 
       $0.it("parses versioned model") {
-         let modelPath = path(forResource: "TypesModel", ofType: "xcdatamodeld")
+         let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld").path
          try test(typeModel: try ModelParser().parseModel(fromPath: modelPath))
       }
    }

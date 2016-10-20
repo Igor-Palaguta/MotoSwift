@@ -2,7 +2,7 @@ import XCTest
 
 public func motoSwiftTests() {
    testModelParser()
-#if !SWIFT_PACKAGE
+#if TEST_MODEL
    testGeneratedCode()
 #endif
 }

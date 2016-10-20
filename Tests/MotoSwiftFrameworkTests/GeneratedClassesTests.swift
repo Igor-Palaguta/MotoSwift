@@ -3,7 +3,7 @@ import Spectre
 import CoreData
 
 private func createContext() throws -> NSManagedObjectContext {
-   let modelUrl = Bundle(for: MotoSwiftTests.self).url(forResource: "TypesModel", withExtension: "momd")!
+   let modelUrl = url(forResource: "TypesModel", ofType: "momd")
    let model = NSManagedObjectModel(contentsOf: modelUrl)!
    let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
    try coordinator.addPersistentStore(ofType: NSInMemoryStoreType,

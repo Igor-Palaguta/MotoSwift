@@ -21,6 +21,7 @@
 		78CD51E61DB2CB3900C76373 /* CodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD51E51DB2CB3900C76373 /* CodeGenerator.swift */; };
 		78CD51E81DB2DBDA00C76373 /* EntityCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD51E71DB2DBDA00C76373 /* EntityCommand.swift */; };
 		78CD51EA1DB2DC6C00C76373 /* ModelCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD51E91DB2DC6C00C76373 /* ModelCommand.swift */; };
+		78E0B5D11DB916140045B34C /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E0B5CF1DB915220045B34C /* Resource.swift */; };
 		OBJ_105 /* PathKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* PathKit.swift */; };
 		OBJ_107 /* Spectre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* Spectre.framework */; };
 		OBJ_114 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Context.swift */; };
@@ -275,6 +276,7 @@
 		78CD51E51DB2CB3900C76373 /* CodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeGenerator.swift; sourceTree = "<group>"; };
 		78CD51E71DB2DBDA00C76373 /* EntityCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCommand.swift; sourceTree = "<group>"; };
 		78CD51E91DB2DC6C00C76373 /* ModelCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCommand.swift; sourceTree = "<group>"; };
+		78E0B5CF1DB915220045B34C /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Expectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expectation.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 				78BA82861DB817D10001C27C /* GeneratedClassesTests.swift */,
 				78656F831DAEE2E40055E780 /* XCTest.swift */,
 				78656F851DAEEB810055E780 /* Expectation.swift */,
+				78E0B5CF1DB915220045B34C /* Resource.swift */,
 			);
 			name = MotoSwiftFrameworkTests;
 			path = Tests/MotoSwiftFrameworkTests;
@@ -951,6 +954,7 @@
 				78656F841DAEE2E40055E780 /* XCTest.swift in Sources */,
 				78AA02361DB80DAC006BD3EB /* TypesModel.xcdatamodeld in Sources */,
 				78656F861DAEEB810055E780 /* Expectation.swift in Sources */,
+				78E0B5D11DB916140045B34C /* Resource.swift in Sources */,
 				78BA82871DB817D10001C27C /* GeneratedClassesTests.swift in Sources */,
 				OBJ_216 /* ModelParserTests.swift in Sources */,
 			);
@@ -1335,6 +1339,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TEST_MODEL;
 				SWIFT_VERSION = 3.0;
 				TARGET_NAME = MotoSwiftFrameworkTests;
 			};
@@ -1351,6 +1356,7 @@
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				SUPPORTED_PLATFORMS = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TEST_MODEL;
 				SWIFT_VERSION = 3.0;
 				TARGET_NAME = MotoSwiftFrameworkTests;
 			};

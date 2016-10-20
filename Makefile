@@ -8,7 +8,7 @@ BUNDLE_LIB_PATH=$(BUNDLE_PATH)/lib
 BUILD_CONFIGURATION=release
 BUILD_PATH=./.build/$(BUILD_CONFIGURATION)/$(EXECUTABLE_NAME)
 
-DEFAULT_RPATH=`dirname \`dirname \\\`xcrun -find swift-stdlib-tool\\\`\``/lib/swift/macosx
+DEFAULT_RPATH=$(shell dirname $(shell dirname $(shell xcrun -find swift-stdlib-tool)))/lib/swift/macosx
 RPATH=@executable_path/../lib
 
 TEMPORARY_FOLDER=/tmp/MotoSwift.dst
@@ -19,6 +19,11 @@ OUTPUT_PACKAGE=MotoSwift.pkg
 
 VERSION_STRING=$(shell agvtool what-marketing-version -terse1)
 
+HOME_PATH=$(shell pwd)
+TEST_RESOURCES_PATH=$(HOME_PATH)/Tests/MotoSwiftFrameworkTests/Resources
+
+MOMC_PATH=$(shell dirname $(shell xcrun -find momc))
+
 lint:
 	swiftlint lint --path ./Source
 
@@ -26,7 +31,8 @@ build:
 	swift build --configuration $(BUILD_CONFIGURATION)
 
 test:
-	swift test
+	cd "$(MOMC_PATH)"; xcrun momc $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld $(TEST_RESOURCES_PATH)/TypesModel.momd
+	swift test -Xswiftc -DTEST_MODEL
 
 .bundle_binary: build
 	mkdir -p "$(BUNDLE_BIN_PATH)"
