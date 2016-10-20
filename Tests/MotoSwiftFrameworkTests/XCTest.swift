@@ -2,6 +2,7 @@ import XCTest
 
 public func motoSwiftTests() {
    testModelParser()
+   testRenderer()
 #if TEST_MODEL
    testGeneratedCode()
 #endif

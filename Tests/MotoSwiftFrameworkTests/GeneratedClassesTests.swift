@@ -2,19 +2,6 @@ import Foundation
 import Spectre
 import CoreData
 
-private func createContext() throws -> NSManagedObjectContext {
-   let modelUrl = url(forResource: "TypesModel", ofType: "momd")
-   let model = NSManagedObjectModel(contentsOf: modelUrl)!
-   let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
-   try coordinator.addPersistentStore(ofType: NSInMemoryStoreType,
-                                      configurationName: nil,
-                                      at: nil,
-                                      options: nil)
-   let context = NSManagedObjectContext()
-   context.persistentStoreCoordinator = coordinator
-   return context
-}
-
 func testGeneratedCode() {
    describe("TypesModel") {
       $0.it("maps non scalar attributes") {
@@ -68,4 +55,17 @@ func testGeneratedCode() {
          try expect(scalarTypes.double).to.beClose(to: 7.8)
       }
    }
+}
+
+private func createContext() throws -> NSManagedObjectContext {
+   let modelUrl = url(forResource: "TypesModel", ofType: "momd")
+   let model = NSManagedObjectModel(contentsOf: modelUrl)!
+   let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+   try coordinator.addPersistentStore(ofType: NSInMemoryStoreType,
+                                      configurationName: nil,
+                                      at: nil,
+                                      options: nil)
+   let context = NSManagedObjectContext()
+   context.persistentStoreCoordinator = coordinator
+   return context
 }

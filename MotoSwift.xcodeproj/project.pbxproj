@@ -7,21 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7835B2F51DB9636700FB1DE2 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2F41DB9636700FB1DE2 /* Renderer.swift */; };
+		7835B2F71DB964A200FB1DE2 /* MotoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2F61DB964A200FB1DE2 /* MotoTemplate.swift */; };
+		7835B2F91DB9696300FB1DE2 /* RendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2F81DB9696300FB1DE2 /* RendererTests.swift */; };
+		7835B2FD1DB969D200FB1DE2 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2FB1DB969D200FB1DE2 /* Resource.swift */; };
+		7835B2FE1DB969D200FB1DE2 /* Expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2FC1DB969D200FB1DE2 /* Expectation.swift */; };
+		7835B3061DB96A0100FB1DE2 /* AllTypesClass+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B3001DB96A0100FB1DE2 /* AllTypesClass+CoreDataClass.swift */; };
+		7835B3071DB96A0100FB1DE2 /* AllTypesClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B3011DB96A0100FB1DE2 /* AllTypesClass+CoreDataProperties.swift */; };
+		7835B3081DB96A0100FB1DE2 /* NumericTypesClass+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B3021DB96A0100FB1DE2 /* NumericTypesClass+CoreDataClass.swift */; };
+		7835B3091DB96A0100FB1DE2 /* NumericTypesClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B3031DB96A0100FB1DE2 /* NumericTypesClass+CoreDataProperties.swift */; };
+		7835B30A1DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B3041DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataClass.swift */; };
+		7835B30B1DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B3051DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataProperties.swift */; };
+		7835B3161DB96D9F00FB1DE2 /* _AllTypesClass.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7835B30C1DB96D2700FB1DE2 /* _AllTypesClass.swift */; };
+		7835B3171DB96D9F00FB1DE2 /* _NumericTypesClass.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7835B30D1DB96D2700FB1DE2 /* _NumericTypesClass.swift */; };
+		7835B3181DB96D9F00FB1DE2 /* _ScalarTypesClass.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7835B30E1DB96D2700FB1DE2 /* _ScalarTypesClass.swift */; };
+		7835B3191DB96D9F00FB1DE2 /* machine.stencil in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7835B30F1DB96D2700FB1DE2 /* machine.stencil */; };
+		7835B31D1DB970AC00FB1DE2 /* Model.swift in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7835B31A1DB9708900FB1DE2 /* Model.swift */; };
+		7835B31E1DB970AC00FB1DE2 /* model.stencil in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7835B31B1DB9708900FB1DE2 /* model.stencil */; };
 		78656F841DAEE2E40055E780 /* XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78656F831DAEE2E40055E780 /* XCTest.swift */; };
-		78656F861DAEEB810055E780 /* Expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78656F851DAEEB810055E780 /* Expectation.swift */; };
 		78AA02361DB80DAC006BD3EB /* TypesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78AA02331DB80D9F006BD3EB /* TypesModel.xcdatamodeld */; };
 		78AA023B1DB80FB6006BD3EB /* TypesModel.xcdatamodeld in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78AA02331DB80D9F006BD3EB /* TypesModel.xcdatamodeld */; };
-		78BA82801DB816400001C27C /* AllTypesClass+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA827A1DB816400001C27C /* AllTypesClass+CoreDataClass.swift */; };
-		78BA82811DB816400001C27C /* AllTypesClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA827B1DB816400001C27C /* AllTypesClass+CoreDataProperties.swift */; };
-		78BA82821DB816400001C27C /* NumericTypesClass+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA827C1DB816400001C27C /* NumericTypesClass+CoreDataClass.swift */; };
-		78BA82831DB816400001C27C /* NumericTypesClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA827D1DB816400001C27C /* NumericTypesClass+CoreDataProperties.swift */; };
-		78BA82841DB816400001C27C /* ScalarTypesClass+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA827E1DB816400001C27C /* ScalarTypesClass+CoreDataClass.swift */; };
-		78BA82851DB816400001C27C /* ScalarTypesClass+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA827F1DB816400001C27C /* ScalarTypesClass+CoreDataProperties.swift */; };
 		78BA82871DB817D10001C27C /* GeneratedClassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA82861DB817D10001C27C /* GeneratedClassesTests.swift */; };
 		78CD51E61DB2CB3900C76373 /* CodeGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD51E51DB2CB3900C76373 /* CodeGenerator.swift */; };
 		78CD51E81DB2DBDA00C76373 /* EntityCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD51E71DB2DBDA00C76373 /* EntityCommand.swift */; };
 		78CD51EA1DB2DC6C00C76373 /* ModelCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CD51E91DB2DC6C00C76373 /* ModelCommand.swift */; };
-		78E0B5D11DB916140045B34C /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78E0B5CF1DB915220045B34C /* Resource.swift */; };
 		OBJ_105 /* PathKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* PathKit.swift */; };
 		OBJ_107 /* Spectre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* Spectre.framework */; };
 		OBJ_114 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* Context.swift */; };
@@ -55,7 +64,6 @@
 		OBJ_157 /* SWXMLHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_47 /* SWXMLHash.swift */; };
 		OBJ_164 /* ArgumentError.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_49 /* ArgumentError.swift */; };
 		OBJ_165 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_50 /* main.swift */; };
-		OBJ_166 /* MotoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_51 /* MotoTemplate.swift */; };
 		OBJ_168 /* Spectre.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_78 /* Spectre.framework */; };
 		OBJ_169 /* PathKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_79 /* PathKit.framework */; };
 		OBJ_170 /* Stencil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = OBJ_80 /* Stencil.framework */; };
@@ -256,6 +264,12 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				7835B31D1DB970AC00FB1DE2 /* Model.swift in CopyFiles */,
+				7835B31E1DB970AC00FB1DE2 /* model.stencil in CopyFiles */,
+				7835B3161DB96D9F00FB1DE2 /* _AllTypesClass.swift in CopyFiles */,
+				7835B3171DB96D9F00FB1DE2 /* _NumericTypesClass.swift in CopyFiles */,
+				7835B3181DB96D9F00FB1DE2 /* _ScalarTypesClass.swift in CopyFiles */,
+				7835B3191DB96D9F00FB1DE2 /* machine.stencil in CopyFiles */,
 				78AA023B1DB80FB6006BD3EB /* TypesModel.xcdatamodeld in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -263,20 +277,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7835B2F41DB9636700FB1DE2 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		7835B2F61DB964A200FB1DE2 /* MotoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotoTemplate.swift; sourceTree = "<group>"; };
+		7835B2F81DB9696300FB1DE2 /* RendererTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererTests.swift; sourceTree = "<group>"; };
+		7835B2FB1DB969D200FB1DE2 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		7835B2FC1DB969D200FB1DE2 /* Expectation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expectation.swift; sourceTree = "<group>"; };
+		7835B3001DB96A0100FB1DE2 /* AllTypesClass+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AllTypesClass+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7835B3011DB96A0100FB1DE2 /* AllTypesClass+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AllTypesClass+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7835B3021DB96A0100FB1DE2 /* NumericTypesClass+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumericTypesClass+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7835B3031DB96A0100FB1DE2 /* NumericTypesClass+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumericTypesClass+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7835B3041DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScalarTypesClass+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7835B3051DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScalarTypesClass+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7835B30C1DB96D2700FB1DE2 /* _AllTypesClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _AllTypesClass.swift; sourceTree = "<group>"; };
+		7835B30D1DB96D2700FB1DE2 /* _NumericTypesClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _NumericTypesClass.swift; sourceTree = "<group>"; };
+		7835B30E1DB96D2700FB1DE2 /* _ScalarTypesClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ScalarTypesClass.swift; sourceTree = "<group>"; };
+		7835B30F1DB96D2700FB1DE2 /* machine.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = machine.stencil; sourceTree = "<group>"; };
+		7835B31A1DB9708900FB1DE2 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		7835B31B1DB9708900FB1DE2 /* model.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = model.stencil; sourceTree = "<group>"; };
 		78656F831DAEE2E40055E780 /* XCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTest.swift; sourceTree = "<group>"; };
-		78656F851DAEEB810055E780 /* Expectation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expectation.swift; sourceTree = "<group>"; };
 		78AA02341DB80D9F006BD3EB /* TypesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TypesModel.xcdatamodel; sourceTree = "<group>"; };
-		78BA827A1DB816400001C27C /* AllTypesClass+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AllTypesClass+CoreDataClass.swift"; sourceTree = "<group>"; };
-		78BA827B1DB816400001C27C /* AllTypesClass+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AllTypesClass+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		78BA827C1DB816400001C27C /* NumericTypesClass+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumericTypesClass+CoreDataClass.swift"; sourceTree = "<group>"; };
-		78BA827D1DB816400001C27C /* NumericTypesClass+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumericTypesClass+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		78BA827E1DB816400001C27C /* ScalarTypesClass+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScalarTypesClass+CoreDataClass.swift"; sourceTree = "<group>"; };
-		78BA827F1DB816400001C27C /* ScalarTypesClass+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScalarTypesClass+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		78BA82861DB817D10001C27C /* GeneratedClassesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedClassesTests.swift; sourceTree = "<group>"; };
 		78CD51E51DB2CB3900C76373 /* CodeGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeGenerator.swift; sourceTree = "<group>"; };
 		78CD51E71DB2DBDA00C76373 /* EntityCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityCommand.swift; sourceTree = "<group>"; };
 		78CD51E91DB2DC6C00C76373 /* ModelCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelCommand.swift; sourceTree = "<group>"; };
-		78E0B5CF1DB915220045B34C /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		OBJ_10 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		OBJ_11 /* Expectation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expectation.swift; sourceTree = "<group>"; };
 		OBJ_12 /* Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
@@ -313,7 +336,6 @@
 		OBJ_47 /* SWXMLHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SWXMLHash.swift; sourceTree = "<group>"; };
 		OBJ_49 /* ArgumentError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentError.swift; sourceTree = "<group>"; };
 		OBJ_50 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		OBJ_51 /* MotoTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotoTemplate.swift; sourceTree = "<group>"; };
 		OBJ_54 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		OBJ_55 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		OBJ_56 /* FetchedProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedProperty.swift; sourceTree = "<group>"; };
@@ -425,25 +447,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7835B2FA1DB9699300FB1DE2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7835B2FB1DB969D200FB1DE2 /* Resource.swift */,
+				7835B2FC1DB969D200FB1DE2 /* Expectation.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7835B2FF1DB96A0100FB1DE2 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				7835B3001DB96A0100FB1DE2 /* AllTypesClass+CoreDataClass.swift */,
+				7835B3011DB96A0100FB1DE2 /* AllTypesClass+CoreDataProperties.swift */,
+				7835B3021DB96A0100FB1DE2 /* NumericTypesClass+CoreDataClass.swift */,
+				7835B3031DB96A0100FB1DE2 /* NumericTypesClass+CoreDataProperties.swift */,
+				7835B3041DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataClass.swift */,
+				7835B3051DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataProperties.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 		78AA02321DB80D9F006BD3EB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7835B31A1DB9708900FB1DE2 /* Model.swift */,
+				7835B31B1DB9708900FB1DE2 /* model.stencil */,
+				7835B30C1DB96D2700FB1DE2 /* _AllTypesClass.swift */,
+				7835B30D1DB96D2700FB1DE2 /* _NumericTypesClass.swift */,
+				7835B30E1DB96D2700FB1DE2 /* _ScalarTypesClass.swift */,
+				7835B30F1DB96D2700FB1DE2 /* machine.stencil */,
 				78AA02331DB80D9F006BD3EB /* TypesModel.xcdatamodeld */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		78BA82791DB816400001C27C /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				78BA827A1DB816400001C27C /* AllTypesClass+CoreDataClass.swift */,
-				78BA827B1DB816400001C27C /* AllTypesClass+CoreDataProperties.swift */,
-				78BA827C1DB816400001C27C /* NumericTypesClass+CoreDataClass.swift */,
-				78BA827D1DB816400001C27C /* NumericTypesClass+CoreDataProperties.swift */,
-				78BA827E1DB816400001C27C /* ScalarTypesClass+CoreDataClass.swift */,
-				78BA827F1DB816400001C27C /* ScalarTypesClass+CoreDataProperties.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 		OBJ_17 /* PathKit */ = {
@@ -510,7 +547,6 @@
 			children = (
 				OBJ_49 /* ArgumentError.swift */,
 				OBJ_50 /* main.swift */,
-				OBJ_51 /* MotoTemplate.swift */,
 				78CD51E51DB2CB3900C76373 /* CodeGenerator.swift */,
 				78CD51E71DB2DBDA00C76373 /* EntityCommand.swift */,
 				78CD51E91DB2DC6C00C76373 /* ModelCommand.swift */,
@@ -560,6 +596,8 @@
 			children = (
 				OBJ_60 /* Language.swift */,
 				OBJ_61 /* Model+TemplateContext.swift */,
+				7835B2F61DB964A200FB1DE2 /* MotoTemplate.swift */,
+				7835B2F41DB9636700FB1DE2 /* Renderer.swift */,
 			);
 			path = Generator;
 			sourceTree = "<group>";
@@ -611,13 +649,13 @@
 		OBJ_73 /* MotoSwiftFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
-				78BA82791DB816400001C27C /* Data */,
+				7835B2FF1DB96A0100FB1DE2 /* Generated */,
+				7835B2FA1DB9699300FB1DE2 /* Utils */,
 				78AA02321DB80D9F006BD3EB /* Resources */,
 				OBJ_74 /* ModelParserTests.swift */,
 				78BA82861DB817D10001C27C /* GeneratedClassesTests.swift */,
 				78656F831DAEE2E40055E780 /* XCTest.swift */,
-				78656F851DAEEB810055E780 /* Expectation.swift */,
-				78E0B5CF1DB915220045B34C /* Resource.swift */,
+				7835B2F81DB9696300FB1DE2 /* RendererTests.swift */,
 			);
 			name = MotoSwiftFrameworkTests;
 			path = Tests/MotoSwiftFrameworkTests;
@@ -852,7 +890,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "swift build --configuration release\n\n./.build/release/motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/class.stencil --output ./Tests/MotoSwiftFrameworkTests/Data --no-rewrite --file-mask \"{{class}}+CoreDataClass.swift\"\n\n./.build/release/motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/properties.stencil --output ./Tests/MotoSwiftFrameworkTests/Data --rewrite --file-mask \"{{class}}+CoreDataProperties.swift\"";
+			shellScript = "swift build --configuration release\n\n./.build/release/motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/class.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --no-rewrite --file-mask \"{{class}}+CoreDataClass.swift\"\n\n./.build/release/motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/properties.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --rewrite --file-mask \"{{class}}+CoreDataProperties.swift\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -921,7 +959,6 @@
 				78CD51E81DB2DBDA00C76373 /* EntityCommand.swift in Sources */,
 				78CD51E61DB2CB3900C76373 /* CodeGenerator.swift in Sources */,
 				OBJ_165 /* main.swift in Sources */,
-				OBJ_166 /* MotoTemplate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,6 +966,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				7835B2F51DB9636700FB1DE2 /* Renderer.swift in Sources */,
 				OBJ_185 /* Attribute.swift in Sources */,
 				OBJ_186 /* Entity.swift in Sources */,
 				OBJ_187 /* FetchedProperty.swift in Sources */,
@@ -939,6 +977,7 @@
 				OBJ_192 /* Attribute+XMLParser.swift in Sources */,
 				OBJ_193 /* Entity+XMLParser.swift in Sources */,
 				OBJ_194 /* FetchedProperty+XMLParser.swift in Sources */,
+				7835B2F71DB964A200FB1DE2 /* MotoTemplate.swift in Sources */,
 				OBJ_195 /* ModelParser.swift in Sources */,
 				OBJ_196 /* Relationship+XMLParser.swift in Sources */,
 				OBJ_197 /* UserInfo+XMLParser.swift in Sources */,
@@ -951,12 +990,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				7835B30A1DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataClass.swift in Sources */,
+				7835B3091DB96A0100FB1DE2 /* NumericTypesClass+CoreDataProperties.swift in Sources */,
 				78656F841DAEE2E40055E780 /* XCTest.swift in Sources */,
 				78AA02361DB80DAC006BD3EB /* TypesModel.xcdatamodeld in Sources */,
-				78656F861DAEEB810055E780 /* Expectation.swift in Sources */,
-				78E0B5D11DB916140045B34C /* Resource.swift in Sources */,
+				7835B2F91DB9696300FB1DE2 /* RendererTests.swift in Sources */,
+				7835B2FD1DB969D200FB1DE2 /* Resource.swift in Sources */,
+				7835B30B1DB96A0100FB1DE2 /* ScalarTypesClass+CoreDataProperties.swift in Sources */,
+				7835B3071DB96A0100FB1DE2 /* AllTypesClass+CoreDataProperties.swift in Sources */,
+				7835B3061DB96A0100FB1DE2 /* AllTypesClass+CoreDataClass.swift in Sources */,
 				78BA82871DB817D10001C27C /* GeneratedClassesTests.swift in Sources */,
 				OBJ_216 /* ModelParserTests.swift in Sources */,
+				7835B3081DB96A0100FB1DE2 /* NumericTypesClass+CoreDataClass.swift in Sources */,
+				7835B2FE1DB969D200FB1DE2 /* Expectation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -967,14 +1013,8 @@
 				OBJ_91 /* Case.swift in Sources */,
 				OBJ_92 /* Context.swift in Sources */,
 				OBJ_93 /* Expectation.swift in Sources */,
-				78BA82841DB816400001C27C /* ScalarTypesClass+CoreDataClass.swift in Sources */,
 				OBJ_94 /* Failure.swift in Sources */,
-				78BA82811DB816400001C27C /* AllTypesClass+CoreDataProperties.swift in Sources */,
-				78BA82821DB816400001C27C /* NumericTypesClass+CoreDataClass.swift in Sources */,
-				78BA82831DB816400001C27C /* NumericTypesClass+CoreDataProperties.swift in Sources */,
-				78BA82801DB816400001C27C /* AllTypesClass+CoreDataClass.swift in Sources */,
 				OBJ_95 /* Global.swift in Sources */,
-				78BA82851DB816400001C27C /* ScalarTypesClass+CoreDataProperties.swift in Sources */,
 				OBJ_96 /* GlobalContext.swift in Sources */,
 				OBJ_97 /* Reporter.swift in Sources */,
 				OBJ_98 /* Reporters.swift in Sources */,

@@ -1,11 +1,10 @@
 import Foundation
-import Stencil
 import MotoSwiftFramework
 
 final class CodeGenerator {
    let classPlaceholder = "{{class}}"
 
-   func render(with template: Template,
+   func render(with renderer: Renderer,
                entitiesFrom model: Model,
                toFilesWithMask fileMask: String,
                inDirectory outputDir: String,
@@ -25,14 +24,13 @@ final class CodeGenerator {
             continue
          }
 
-         let code = try template.render(Context(dictionary: try model.templateContext(for: entity),
-                                                namespace: MotoNamespace()))
+         let code = try renderer.render(entity: entity, from: model)
 
          try fileOutput.write(text: code)
       }
    }
 
-   func render(with template: Template,
+   func render(with renderer: Renderer,
                model: Model,
                toFile file: String? = nil,
                rewrite: Bool = false) throws {
@@ -51,8 +49,7 @@ final class CodeGenerator {
          return
       }
 
-      let code = try template.render(Context(dictionary: try model.templateContext(),
-                                             namespace: MotoNamespace()))
+      let code = try renderer.render(model: model)
 
       try fileOutput.write(text: code)
    }

@@ -30,9 +30,14 @@ lint:
 build:
 	swift build --configuration $(BUILD_CONFIGURATION)
 
-test:
+.prepare_test_data: build
+	"$(BUILD_PATH)" entity --model $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld --template ./Templates/class.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --rewrite --file-mask "{{class}}+CoreDataClass.swift"
+	"$(BUILD_PATH)"  entity --model $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld --template ./Templates/properties.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --rewrite --file-mask "{{class}}+CoreDataProperties.swift"
 	cd "$(MOMC_PATH)"; xcrun momc $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld $(TEST_RESOURCES_PATH)/TypesModel.momd
+
+test: .prepare_test_data
 	swift test -Xswiftc -DTEST_MODEL
+	rm -rf $(TEST_RESOURCES_PATH)/TypesModel.momd
 
 .bundle_binary: build
 	mkdir -p "$(BUNDLE_BIN_PATH)"

@@ -1,8 +1,6 @@
 import Foundation
 import MotoSwiftFramework
 import Commander
-import Stencil
-import PathKit
 
 func entityCommand() -> CommandType {
    let generator = CodeGenerator()
@@ -23,12 +21,12 @@ func entityCommand() -> CommandType {
       }
 
       let templatePath = try requiredValue(ofArgument: "template", withValue: templatePath)
-      let template = try MotoTemplate(path: Path(templatePath))
+      let renderer = try Renderer(templatePath: templatePath)
 
       let outputDir = try requiredValue(ofArgument: "output", withValue: outputDir)
       let model = try ModelParser().parseModel(fromPath: modelPath)
 
-      try generator.render(with: template,
+      try generator.render(with: renderer,
                            entitiesFrom: model,
                            toFilesWithMask: fileMask,
                            inDirectory: outputDir,

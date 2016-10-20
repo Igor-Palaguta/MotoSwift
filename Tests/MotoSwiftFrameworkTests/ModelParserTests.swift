@@ -2,6 +2,22 @@ import Foundation
 import Spectre
 @testable import MotoSwiftFramework
 
+func testModelParser() {
+   describe("ModelParser") {
+      $0.it("parses non versioned model") {
+         let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld")
+            .appendingPathComponent("TypesModel.xcdatamodel")
+            .path
+         try test(typeModel: try ModelParser().parseModel(fromPath: modelPath))
+      }
+
+      $0.it("parses versioned model") {
+         let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld").path
+         try test(typeModel: try ModelParser().parseModel(fromPath: modelPath))
+      }
+   }
+}
+
 private func test(typeModel model: Model) throws {
    try expect(model.entities.count) == 3
    let allTypesEntity = model.index["AllTypes"]!
@@ -64,20 +80,4 @@ private func test(typeModel model: Model) throws {
    ]
 
    try expect(scalarTypesEntity.fetchedProperties).to.containsSameElements(with: expectedFetchedProperties)
-}
-
-func testModelParser() {
-   describe("ModelParser") {
-      $0.it("parses non versioned model") {
-         let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld")
-            .appendingPathComponent("TypesModel.xcdatamodel")
-            .path
-         try test(typeModel: try ModelParser().parseModel(fromPath: modelPath))
-      }
-
-      $0.it("parses versioned model") {
-         let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld").path
-         try test(typeModel: try ModelParser().parseModel(fromPath: modelPath))
-      }
-   }
 }
