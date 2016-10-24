@@ -22,7 +22,7 @@ Parses Core Data model, and applies templates for generation swift code
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.9'
 
-  s.source_files = 'Source/MotoSwiftFramework/**/*'
+  s.source_files = 'Source/MotoSwiftFramework/**/*.swift'
 
   s.dependency 'SWXMLHash'
   s.dependency 'Stencil'
