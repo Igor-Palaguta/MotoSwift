@@ -6,7 +6,7 @@
 //  Copyright © 2016 Igor Palaguta. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for MotoSwiftFramework.
 FOUNDATION_EXPORT double MotoSwiftFrameworkVersionNumber;
