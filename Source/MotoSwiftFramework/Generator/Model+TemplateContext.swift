@@ -52,7 +52,7 @@ extension Attribute: TemplateContext {
 
 extension Relationship: TemplateContext {
    func templateContext(language: Language, model: Model) throws -> [String: Any] {
-      var context: [String: Any] = ["name": name,
+      var context: [String: Any] = ["name": self.name,
                                     "entityName": self.entityName,
                                     "isOptional": self.isOptional,
                                     "toMany": self.toMany,

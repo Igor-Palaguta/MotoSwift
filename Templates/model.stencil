@@ -1,9 +1,23 @@
 import Foundation
 
 {% if entities %}
-enum Entities: String {
+public struct CoreDataEntity {
    {% for entity in entities %}
-   case {{ entity.name }}
+   public struct {{ entity.name }} {
+      public static let name = "{{ entity.name }}"
+
+      public struct Field {
+         {% for attribute in entity.attributes %}
+         public static let {{ attribute.name }} = "{{ attribute.name }}"
+         {% endfor %}
+         {% for relationship in entity.relationships %}
+         public static let {{ relationship.name }} = "{{ relationship.name }}"
+         {% endfor %}
+         {% for property in entity.fetchedProperties %}
+         public static let {{ property.name }} = "{{ property.name }}"
+         {% endfor %}
+      }
+   }
    {% endfor %}
 }
 {% endif %}
