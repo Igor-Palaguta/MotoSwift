@@ -12,16 +12,9 @@ let modelCommand = command(
    let model = try ModelParser().parseModel(fromPath: modelPath)
    let renderer = try Renderer(templatePath: templatePath)
 
-   let fileOutput: Output
-   if !output.isEmpty {
-      let outputPath = Path(output)
-      fileOutput = .File(outputPath)
-
-      let parentPath = (String(describing: outputPath) as NSString).deletingLastPathComponent
-      try Path(parentPath).mkpath()
-   } else {
-      fileOutput = .Console
-   }
+   let fileOutput: Output = output.isEmpty
+      ? .Console
+      : .File(Path(output))
 
    let code = try renderer.render(model: model)
 
