@@ -1,13 +1,13 @@
 import Foundation
 
 extension Model {
-   func templateContext(for entity: Entity) throws -> [String: Any] {
-      return try entity.templateContext(language: .Swift, model: self)
+   func templateVariables(for entity: Entity) throws -> [String: Any] {
+      return try entity.templateVariables(language: .Swift, model: self)
    }
 
-   func templateContext() throws -> [String: Any] {
+   func templateVariables() throws -> [String: Any] {
       let entitiesContexts = try self.entities.map {
-         try $0.templateContext(language: .Swift, model: self)
+         try $0.templateVariables(language: .Swift, model: self)
       }
 
       return ["entities": entitiesContexts]
@@ -15,11 +15,11 @@ extension Model {
 }
 
 protocol TemplateContext {
-   func templateContext(language: Language, model: Model) throws -> [String: Any]
+   func templateVariables(language: Language, model: Model) throws -> [String: Any]
 }
 
 extension Entity: TemplateContext {
-   func templateContext(language: Language, model: Model) throws -> [String: Any] {
+   func templateVariables(language: Language, model: Model) throws -> [String: Any] {
       var context: [String: Any] = ["name": self.name]
       context["class"] = self.className
       if let parentEntityName = self.parentEntityName,
@@ -27,20 +27,20 @@ extension Entity: TemplateContext {
          context["parentClass"] = parentClassName
       }
       context["attributes"] = try self.attributes.map {
-         try $0.templateContext(language: language, model: model)
+         try $0.templateVariables(language: language, model: model)
       }
       context["relationships"] = try self.relationships.map {
-         try $0.templateContext(language: language, model: model)
+         try $0.templateVariables(language: language, model: model)
       }
       context["fetchedProperties"] = try self.fetchedProperties.map {
-         try $0.templateContext(language: language, model: model)
+         try $0.templateVariables(language: language, model: model)
       }
       return context + self.userInfo
    }
 }
 
 extension Attribute: TemplateContext {
-   func templateContext(language: Language, model: Model) throws -> [String: Any] {
+   func templateVariables(language: Language, model: Model) throws -> [String: Any] {
       var context: [String: Any] = ["name": self.name,
                                     "type": language.type(for: self.type),
                                     "isOptional": self.isOptional,
@@ -51,7 +51,7 @@ extension Attribute: TemplateContext {
 }
 
 extension Relationship: TemplateContext {
-   func templateContext(language: Language, model: Model) throws -> [String: Any] {
+   func templateVariables(language: Language, model: Model) throws -> [String: Any] {
       var context: [String: Any] = ["name": self.name,
                                     "entityName": self.entityName,
                                     "isOptional": self.isOptional,
@@ -63,7 +63,7 @@ extension Relationship: TemplateContext {
 }
 
 extension FetchedProperty: TemplateContext {
-   func templateContext(language: Language, model: Model) throws -> [String: Any] {
+   func templateVariables(language: Language, model: Model) throws -> [String: Any] {
       var context: [String: Any] = ["name": self.name,
                                     "entityName": self.entityName,
                                     "predicateString": self.predicateString]

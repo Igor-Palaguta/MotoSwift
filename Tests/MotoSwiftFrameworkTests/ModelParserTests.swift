@@ -1,18 +1,17 @@
 import Foundation
 import Spectre
+import PathKit
 @testable import MotoSwiftFramework
 
 func testModelParser() {
    describe("ModelParser") {
       $0.it("parses non versioned model") {
-         let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld")
-            .appendingPathComponent("TypesModel.xcdatamodel")
-            .path
+         let modelPath = path(forResource: "TypesModel", ofType: "xcdatamodeld") + "TypesModel.xcdatamodel"
          try test(typeModel: try ModelParser().parseModel(fromPath: modelPath))
       }
 
       $0.it("parses versioned model") {
-         let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld").path
+         let modelPath = path(forResource: "TypesModel", ofType: "xcdatamodeld")
          try test(typeModel: try ModelParser().parseModel(fromPath: modelPath))
       }
    }

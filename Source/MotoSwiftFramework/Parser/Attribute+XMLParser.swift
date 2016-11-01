@@ -26,7 +26,7 @@ private let typesMapping: [String: AttributeType] = ["Boolean": .Boolean,
 extension AttributeType {
    fileprivate init(stringValue: String) throws {
       guard let type = typesMapping[stringValue] else {
-         throw MotoSwiftError("Unexpected attribute type: '\(stringValue)'")
+         throw MotoError.unknownAttributeType(stringValue)
       }
       self = type
    }

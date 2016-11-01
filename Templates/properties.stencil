@@ -1,6 +1,11 @@
+// DO NOT EDIT. This file is machine-generated and constantly overwritten.
+// Make changes to {{ file }} instead.
+
 import Foundation
 import CoreData
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
 extension {{ class }} {
    public {% if parentClass %}override {% endif %}class var entityName: String {
       return "{{ name }}"

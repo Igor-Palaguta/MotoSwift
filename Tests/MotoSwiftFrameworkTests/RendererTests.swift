@@ -4,11 +4,11 @@ import Spectre
 
 func testRenderer() {
    describe("Renderer") {
-      let modelPath = url(forResource: "TypesModel", ofType: "xcdatamodeld").path
+      let modelPath = path(forResource: "TypesModel", ofType: "xcdatamodeld")
       let model = try! ModelParser().parseModel(fromPath: modelPath)
 
       $0.it("renders entity") {
-         let templatePath = url(forResource: "machine", ofType: "stencil").path
+         let templatePath = path(forResource: "machine", ofType: "stencil")
          let renderer = try Renderer(templatePath: templatePath)
 
          for entity in model.entities {
@@ -16,18 +16,18 @@ func testRenderer() {
                return
             }
             let code = try renderer.render(entity: entity, from: model)
-            let expectedEntityUrl = url(forResource: "_\(className)", ofType: "swift")
-            let expectedCode = try String(contentsOf: expectedEntityUrl, encoding: .utf8)
+            let expectedEntityPath = path(forResource: "_\(className)", ofType: "swift.out")
+            let expectedCode: String = try expectedEntityPath.read()
             try expect(code) == expectedCode
          }
       }
       $0.it("renders model") {
-         let templatePath = url(forResource: "model", ofType: "stencil").path
+         let templatePath = path(forResource: "model", ofType: "stencil")
          let renderer = try Renderer(templatePath: templatePath)
 
          let code = try renderer.render(model: model)
-         let expectedEntityUrl = url(forResource: "Model", ofType: "swift")
-         let expectedCode = try String(contentsOf: expectedEntityUrl, encoding: .utf8)
+         let expectedEntityPath = path(forResource: "Model", ofType: "swift.out")
+         let expectedCode: String = try expectedEntityPath.read()
          try expect(code) == expectedCode
       }
    }

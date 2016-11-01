@@ -1,6 +1,11 @@
+// DO NOT EDIT. This file is machine-generated and constantly overwritten.
+// Make changes to machine.stencil instead.
+
 import Foundation
 import CoreData
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
 public enum NumericTypesClassAttributes: String {
    case boolean
    case decimal
@@ -16,6 +21,7 @@ public enum NumericTypesClassRelationships: String {
 }
 
 
+// swiftlint:disable type_name
 public class _NumericTypesClass: NSManagedObject {
    public class var entityName: String {
       return "NumericTypes"

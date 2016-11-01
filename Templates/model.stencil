@@ -1,5 +1,11 @@
+// DO NOT EDIT. This file is machine-generated and constantly overwritten.
+// Make changes to {{ file }} instead.
+
 import Foundation
 
+// swiftlint:disable file_length
+// swiftlint:disable type_body_length
+// swiftlint:disable nesting
 {% if entities %}
 public struct CoreDataEntity {
    {% for entity in entities %}

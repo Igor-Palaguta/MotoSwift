@@ -1,4 +1,5 @@
 import Foundation
+import PathKit
 
 func url(forResource resource: String, ofType type: String) -> URL {
    #if SWIFT_PACKAGE
@@ -8,4 +9,8 @@ func url(forResource resource: String, ofType type: String) -> URL {
    #else
       return Bundle(for: MotoSwiftTests.self).url(forResource: resource, withExtension: type)!
    #endif
+}
+
+func path(forResource resource: String, ofType type: String) -> Path {
+   return Path(url(forResource: resource, ofType: type).path)
 }

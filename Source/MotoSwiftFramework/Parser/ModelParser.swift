@@ -1,44 +1,38 @@
 import Foundation
 import SWXMLHash
+import PathKit
 
 public final class ModelParser {
 
    public init() {
    }
 
-   public func parseModel(fromPath path: String) throws -> Model {
-      let path = URL(fileURLWithPath: try currentVersion(forModelPath: path), isDirectory: true)
-         .appendingPathComponent("contents")
-         .path
+   public func parseModel(fromPath path: Path) throws -> Model {
+      let path = try currentVersion(forModelPath: path) + "contents"
 
-      let content = try String(contentsOfFile: path)
+      let content: String = try path.read()
       let xml = SWXMLHash.parse(content)
       let entities: [Entity] = try xml["model"]["entity"].map { try Entity(xml: $0) }
       return Model(entities)
    }
 
-   private func currentVersion(forModelPath modelPath: String) throws -> String {
-      let url = URL(fileURLWithPath: modelPath, isDirectory: true)
-      switch url.pathExtension {
-      case "xcdatamodel":
+   private func currentVersion(forModelPath modelPath: Path) throws -> Path {
+      switch modelPath.extension {
+      case .some("xcdatamodel"):
          return modelPath
-      case "xcdatamodeld":
-         let currentVersionFile = url.appendingPathComponent(".xccurrentversion").path
-         guard FileManager.default.fileExists(atPath: currentVersionFile) else {
-            return url
-               .appendingPathComponent(url.lastPathComponent)
-               .deletingPathExtension()
-               .appendingPathExtension("xcdatamodel")
-               .path
+      case .some("xcdatamodeld"):
+         let versionFilePath = modelPath + ".xccurrentversion"
+         guard versionFilePath.exists else {
+            return modelPath + "\(modelPath.lastComponentWithoutExtension).xcdatamodel"
          }
          let versionKey = "_XCCurrentVersionName"
-         guard let plist = NSDictionary(contentsOfFile: currentVersionFile),
+         guard let plist = NSDictionary(contentsOfFile: String(describing: versionFilePath)),
             let versionFile = plist[versionKey] as? String else {
-               throw MotoSwiftError("\(versionKey) is absent in: '\(currentVersionFile)'")
+               throw MotoError.absentPlistKey(key: versionKey, plistPath: String(describing: versionFilePath))
          }
-         return url.appendingPathComponent(versionFile).path
+         return modelPath + versionFile
       default:
-         throw MotoSwiftError("Invalid model type: '\(modelPath)'")
+         throw MotoError.invalidModelType(String(describing: modelPath))
       }
    }
 }

@@ -31,8 +31,8 @@ build:
 	swift build --configuration $(BUILD_CONFIGURATION)
 
 .prepare_test_data: build
-	"$(BUILD_PATH)" entity --model $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld --template ./Templates/class.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --rewrite --file-mask "{{class}}+CoreDataClass.swift"
-	"$(BUILD_PATH)"  entity --model $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld --template ./Templates/properties.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --rewrite --file-mask "{{class}}+CoreDataProperties.swift"
+	"$(BUILD_PATH)" machine --template ./Templates/class.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --file-mask "{{class}}+CoreDataClass.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
+	"$(BUILD_PATH)"  machine --template ./Templates/properties.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --file-mask "{{class}}+CoreDataProperties.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
 	cd "$(MOMC_PATH)"; xcrun momc $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld $(TEST_RESOURCES_PATH)/TypesModel.momd
 
 test: .prepare_test_data

@@ -2,18 +2,15 @@ import Foundation
 import Commander
 
 private final class Application {
-   let version = "0.0.1"
+   let version = "0.1.0"
 
    func run() {
       let main = Group {
-         $0.addCommand("entity",
-                       "Apply entity template and render every entity to separate file",
-                       entityCommand())
-         $0.addCommand("model",
-                       "Apply model template and print code to output or file",
-                       modelCommand())
+         $0.addCommand("model", "generate code for your model", modelCommand)
+         $0.addCommand("human", "generate human code for your model. Does not write to file, if file already exists", humanCommand)
+         $0.addCommand("machine", "generate machine code for your model. Overwrites file every time", machineCommand)
          $0.addCommand("version",
-                       "Display the current version of MotoSwift",
+                       "current version of MotoSwift",
                        command { print(self.version) })
       }
 

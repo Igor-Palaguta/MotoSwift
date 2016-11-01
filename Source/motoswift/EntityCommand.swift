@@ -1,35 +1,72 @@
 import Foundation
 import MotoSwiftFramework
 import Commander
+import PathKit
 
-func entityCommand() -> CommandType {
-   let generator = CodeGenerator()
-   return command(
-      Option<String>("model", "", description: "Path to CoreData model."),
-      Option<String>("file-mask", "",
-                     description: "File name mask, e.g: \"_\(generator.classPlaceholder).swift\"."),
-      Option<String>("template", "", description: "Path to entity template."),
-      Option<String>("output", "", description: "Output directory."),
-      Flag("rewrite", description: "Rewrite file if exists.", default: false)
-   ) { modelPath, fileMask, templatePath, outputDir, rewrite in
-      let modelPath = try requiredValue(ofArgument: "model", withValue: modelPath)
-      let fileMask = try requiredValue(ofArgument: "file-mask", withValue: fileMask)
+let humanCommand = command(forFile: .Human)
+let machineCommand = command(forFile: .Machine)
 
-      if !fileMask.contains(generator.classPlaceholder) {
-         throw ArgumentError.invalidFileNameFormat(actual: fileMask,
-                                                   placeholder: generator.classPlaceholder)
+private let classPlaceholder = "{{class}}"
+
+private enum EntityFile {
+   case Machine
+   case Human
+
+   var defaultMask: String {
+      switch self {
+      case .Machine:
+         return "\(classPlaceholder)+Properties.swift"
+      case .Human:
+         return "\(classPlaceholder).swift"
       }
+   }
 
-      let templatePath = try requiredValue(ofArgument: "template", withValue: templatePath)
-      let renderer = try Renderer(templatePath: templatePath)
-
-      let outputDir = try requiredValue(ofArgument: "output", withValue: outputDir)
-      let model = try ModelParser().parseModel(fromPath: modelPath)
-
-      try generator.render(with: renderer,
-                           entitiesFrom: model,
-                           toFilesWithMask: fileMask,
-                           inDirectory: outputDir,
-                           rewrite: rewrite)
+   var isRewritable: Bool {
+      switch self {
+      case .Machine:
+         return true
+      case .Human:
+         return false
+      }
    }
 }
+
+private func command(forFile fileType: EntityFile) -> CommandType {
+   return command(
+      Option<Path>("template", "", description: "Path to entity template."),
+      Option<String>("file-mask", fileType.defaultMask,
+                     description: "The file name mask for entity file, e.g: \"_\(classPlaceholder).swift\""),
+      Option<Path>("output", ".",
+                   description: "The output directory"),
+      Argument<Path>("FILE",
+                     description: "CoreData model to parse.")
+   ) { templatePath, fileMask, outputDir, modelPath in
+
+      if !fileMask.contains(classPlaceholder) {
+         throw ArgumentError.invalidFileNameFormat(actual: fileMask, placeholder: classPlaceholder)
+      }
+
+      let model = try ModelParser().parseModel(fromPath: modelPath)
+
+      let renderer = try Renderer(templatePath: templatePath)
+
+      try outputDir.mkpath()
+
+      for entity in model.entities {
+         guard let className = entity.className else {
+            continue
+         }
+         let fileName = fileMask.replacingOccurrences(of: classPlaceholder, with: className)
+         let entityFilePath = outputDir + fileName
+         let fileOutput: Output = .File(entityFilePath)
+         if fileOutput.exists && !fileType.isRewritable {
+            continue
+         }
+
+         let code = try renderer.render(entity: entity, from: model)
+
+         try fileOutput.write(text: code)
+      }
+   }
+}
+
