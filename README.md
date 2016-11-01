@@ -14,52 +14,54 @@ If you need all components in one folder run `make bundle`. Now you can copy who
 
 ## Usage
 
-* **motoswift entity** - Applies entity template and renders every entity to separate file
+* **motoswift human [OPTIONS] MODEL_PATH** - generate human code for your model. Does not write to file, if file already exists
 
   Options:
-    * --model - Path to CoreData model.
-    * --file-mask - File name mask, e.g: "_{{class}}.swift".
     * --template - Path to entity template.
-    * --output - Output directory.
-    * --rewrite - Rewrite if exists
+    * --file-mask - The file name mask for entity file, e.g: "{{class}}.swift"
+    * --output - The output directory
 
-* **motoswift model** - Applies model template and prints result to output
+
+* **motoswift machine [OPTIONS] MODEL_PATH** - generate machine code for your model. Overwrites file every time
 
   Options:
-    * --model - Path to CoreData model.
+    * --template - Path to entity template.
+    * --file-mask - The file name mask for entity file, e.g: "{{class}}+Properties.swift"
+    * --output - The output directory
+
+
+* **motoswift model [OPTIONS] MODEL_PATH** - generate code for your model
+
+  Options:
+    * --output - Output file path.
     * --template - Path to model template.
-    * --output - Output file path. If missed prints to console
-    * --rewrite - Rewrite file if exists.
 
-## Additional documentation
-MotoSwift uses [Stencil](https://github.com/kylef/Stencil) as template language
 
-## Examples
+Example:
 
 1. *XCode* style
 
-Generate class files:
+`motoswift human --template ./Templates/class.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataClass.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
 
-`motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/class.stencil --output ./SampleOutput/XCode --no-rewrite --file-mask "{{class}}+CoreDataClass.swift"`
-
-Generate properties files:
-
-`motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/properties.stencil --output ./SampleOutput/XCode --rewrite --file-mask "{{class}}+CoreDataProperties.swift"`
+`motoswift machine --template ./Templates/properties.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataProperties.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
 
 [SampleOutput/XCode](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/XCode)
 
 2. *Mogenerator* style
 
-Generate machine files:
+`motoswift human --template ./Templates/human.stencil --output ./SampleOutput/Human --file-mask "{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
 
-`motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/machine.stencil --output ./SampleOutput/Machine --rewrite --file-mask "_{{class}}.swift"`
-
-[SampleOutput/Machine](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Machine)
-
-Generate human files:
-
-`motoswift entity --model ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld --template ./Templates/human.stencil --output ./SampleOutput/Human --no-rewrite --file-mask "{{class}}.swift"`
+`motoswift machine --template ./Templates/machine.stencil --output ./SampleOutput/Machine --file-mask "_{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
 
 [SampleOutput/Human](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Human)
 
+[SampleOutput/Machine](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Machine)
 
+3. entity/attribute/relationship/fetched property names
+
+`motoswift model --template ./Templates/model.stencil --output ./SampleOutput/Model/Model.swift ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+
+[SampleOutput/Model/Model.swift](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Model/Model.swift)
+
+## Additional documentation
+MotoSwift uses [Stencil](https://github.com/kylef/Stencil) as template language

@@ -35,7 +35,7 @@ private func command(forFile fileType: EntityFile) -> CommandType {
    return command(
       Option<Path>("template", "", description: "Path to entity template."),
       Option<String>("file-mask", fileType.defaultMask,
-                     description: "The file name mask for entity file, e.g: \"_\(classPlaceholder).swift\""),
+                     description: "The file name mask for entity file, e.g: \"\(fileType.defaultMask)\""),
       Option<Path>("output", ".",
                    description: "The output directory"),
       Argument<Path>("FILE",
