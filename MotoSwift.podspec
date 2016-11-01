@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MotoSwift'
-  s.version          = '0.0.3'
+  s.version          = '0.1.0'
   s.summary          = 'Generates managed object subclasses from Core Data model.'
 
   s.description      = <<-DESC
