@@ -37,31 +37,29 @@ If you need all components in one folder run `make bundle`. Now you can copy who
     * --template - Path to model template.
 
 
-Example:
+###Examples
 
 1. *XCode* style
 
-`motoswift human --template ./Templates/class.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataClass.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
-
-`motoswift machine --template ./Templates/properties.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataProperties.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
-
-[SampleOutput/XCode](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/XCode)
+  `motoswift human --template ./Templates/class.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataClass.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  `motoswift machine --template ./Templates/properties.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataProperties.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  
+  [SampleOutput/XCode](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/XCode)
 
 2. *Mogenerator* style
 
-`motoswift human --template ./Templates/human.stencil --output ./SampleOutput/Human --file-mask "{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  `motoswift human --template ./Templates/human.stencil --output ./SampleOutput/Human --file-mask "{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  `motoswift machine --template ./Templates/machine.stencil --output ./SampleOutput/Machine --file-mask "_{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  
+  [SampleOutput/Human](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Human)
+  
+  [SampleOutput/Machine](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Machine)
 
-`motoswift machine --template ./Templates/machine.stencil --output ./SampleOutput/Machine --file-mask "_{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+3. All entity and field names
 
-[SampleOutput/Human](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Human)
-
-[SampleOutput/Machine](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Machine)
-
-3. entity/attribute/relationship/fetched property names
-
-`motoswift model --template ./Templates/model.stencil --output ./SampleOutput/Model/Model.swift ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
-
-[SampleOutput/Model/Model.swift](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Model/Model.swift)
+  `motoswift model --template ./Templates/model.stencil --output ./SampleOutput/Model/Model.swift ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  
+  [SampleOutput/Model/Model.swift](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Model/Model.swift)
 
 ## Additional documentation
 MotoSwift uses [Stencil](https://github.com/kylef/Stencil) as template language
