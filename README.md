@@ -1,5 +1,19 @@
 # MotoSwift. Managed Objects to Swift.
-Converts Core Data model to Swift.
+Generates Swift NSManagedObject subclasses.
+
+## Benefits
+
+Why is it better than Xcode generation?
+
+1. Xcode generates properties ignoring optional flag
+2. Allows to customize generated code with templates
+3. Allows to specify type for transform properties
+
+Why it is better than Mogenerator?
+
+1. Allows to generate extensions for machine code
+
+Additionally it allows to generate one file for whole model, e.g. you need list of entity names
 
 ## Installation
 1. Install MotoSwift by downloading MotoSwift.pkg from the [latest GitHub release](https://github.com/Igor-Palaguta/MotoSwift/releases/latest) and running it.
@@ -39,12 +53,12 @@ If you need all components in one folder run `make bundle`. Now you can copy who
 
 ###Examples
 
-1. *XCode* style
+1. *Xcode* style
 
   `motoswift human --template ./Templates/class.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataClass.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
   `motoswift machine --template ./Templates/properties.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataProperties.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
   
-  [SampleOutput/XCode](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/XCode)
+  [SampleOutput/Xcode](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/XCode)
 
 2. *Mogenerator* style
 
