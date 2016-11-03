@@ -9,7 +9,7 @@ Why is it better than Xcode generation?
 2. Allows to customize generated code with templates
 3. Allows to specify type for transform properties
 
-Why it is better than Mogenerator?
+Why is it better than Mogenerator?
 
 1. Allows to generate extensions for machine code
 
