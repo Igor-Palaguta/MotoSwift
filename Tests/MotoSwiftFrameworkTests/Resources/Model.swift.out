@@ -10,7 +10,7 @@ public struct CoreDataEntity {
    public struct AllTypes {
       public static let name = "AllTypes"
 
-      public struct Field {
+      public class Field: NumericTypes.Field {
          public static let data = "data"
          public static let date = "date"
          public static let string = "string"
@@ -20,7 +20,7 @@ public struct CoreDataEntity {
    public struct NumericTypes {
       public static let name = "NumericTypes"
 
-      public struct Field {
+      public class Field {
          public static let boolean = "boolean"
          public static let decimal = "decimal"
          public static let double = "double"
@@ -34,7 +34,7 @@ public struct CoreDataEntity {
    public struct ScalarTypes {
       public static let name = "ScalarTypes"
 
-      public struct Field {
+      public class Field {
          public static let boolean = "boolean"
          public static let double = "double"
          public static let float = "float"

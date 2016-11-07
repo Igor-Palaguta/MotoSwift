@@ -23,8 +23,8 @@ extension Entity: TemplateContext {
       var context: [String: Any] = ["name": self.name]
       context["class"] = self.className
       if let parentEntityName = self.parentEntityName,
-         let parentClassName = model.index[parentEntityName]?.className {
-         context["parentClass"] = parentClassName
+         let parentEntity = model.index[parentEntityName] {
+         context["parent"] = try parentEntity.templateVariables(language: language, model: model)
       }
       context["attributes"] = try self.attributes.map {
          try $0.templateVariables(language: language, model: model)

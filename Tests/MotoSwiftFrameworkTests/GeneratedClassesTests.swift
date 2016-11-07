@@ -54,6 +54,30 @@ func testGeneratedCode() {
          try expect(scalarTypes.float).to.beClose(to: 5.6)
          try expect(scalarTypes.double).to.beClose(to: 7.8)
       }
+
+      $0.it("generates names") {
+
+         let context = try createContext()
+         let scalarTypes = NSEntityDescription.insertNewObject(forEntityName: CoreDataEntity.ScalarTypes.name, into: context)
+         let allTypes = NSEntityDescription.insertNewObject(forEntityName: CoreDataEntity.AllTypes.name, into: context)
+
+         scalarTypes.setValue(allTypes, forKey: CoreDataEntity.ScalarTypes.Field.numerics)
+         scalarTypes.setValue(2, forKey: CoreDataEntity.ScalarTypes.Field.int16)
+         scalarTypes.setValue(4, forKey: CoreDataEntity.ScalarTypes.Field.int32)
+         scalarTypes.setValue(8, forKey: CoreDataEntity.ScalarTypes.Field.int64)
+         scalarTypes.setValue(false, forKey: CoreDataEntity.ScalarTypes.Field.boolean)
+         scalarTypes.setValue(5.6, forKey: CoreDataEntity.ScalarTypes.Field.float)
+         scalarTypes.setValue(7.8, forKey: CoreDataEntity.ScalarTypes.Field.double)
+         allTypes.setValue(9.1, forKey: CoreDataEntity.AllTypes.Field.double)
+         try context.save()
+         try expect(scalarTypes.value(forKey: CoreDataEntity.ScalarTypes.Field.int16) as? Int) == 2
+         try expect(scalarTypes.value(forKey: CoreDataEntity.ScalarTypes.Field.int32) as? Int) == 4
+         try expect(scalarTypes.value(forKey: CoreDataEntity.ScalarTypes.Field.int64) as? Int) == 8
+         try expect(scalarTypes.value(forKey: CoreDataEntity.ScalarTypes.Field.boolean) as? Bool) == false
+         try expect(scalarTypes.value(forKey: CoreDataEntity.ScalarTypes.Field.float) as? Float).to.beClose(to: 5.6)
+         try expect(scalarTypes.value(forKey: CoreDataEntity.ScalarTypes.Field.double) as? Double).to.beClose(to: 7.8)
+         try expect(allTypes.value(forKey: CoreDataEntity.AllTypes.Field.double) as? Double).to.beClose(to: 9.1)
+      }
    }
 }
 
