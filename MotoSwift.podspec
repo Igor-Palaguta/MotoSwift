@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'MotoSwift'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Generates managed object subclasses from Core Data model.'
 
   s.description      = <<-DESC
@@ -18,6 +18,6 @@ Parses Core Data model, and applies templates for generation swift code
 
   s.source_files = 'Source/MotoSwiftFramework/**/*.swift'
 
-  s.dependency 'SWXMLHash'
-  s.dependency 'Stencil'
+  s.dependency 'SWXMLHash', '~> 3.0'
+  s.dependency 'Stencil', '~> 0.7.1'
 end
