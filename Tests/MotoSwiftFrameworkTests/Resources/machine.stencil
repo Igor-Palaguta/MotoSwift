@@ -59,7 +59,7 @@ public class _{{ class }}: {% if parent.class %}{{ parent.class }}{% else %}NSMa
    {% endfor %}
 
    {% for relationship in relationships %}
-   {% ifnot relationship.toMany %}
+   {% if not relationship.toMany %}
    @NSManaged public var {{ relationship.name }}: {% if relationship.class %}{{ relationship.class }}{% else %}NSManagedObject{% endif %}{% if relationship.isOptional %}?{% endif %}
    {% else %}
    @NSManaged public var {{ relationship.name }}: {% if relationship.isOrdered %}NSOrderedSet{% else %}NSSet{% endif %}

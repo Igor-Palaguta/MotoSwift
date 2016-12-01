@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7835B2F51DB9636700FB1DE2 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2F41DB9636700FB1DE2 /* Renderer.swift */; };
-		7835B2F71DB964A200FB1DE2 /* MotoTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2F61DB964A200FB1DE2 /* MotoTemplate.swift */; };
 		7835B2F91DB9696300FB1DE2 /* RendererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2F81DB9696300FB1DE2 /* RendererTests.swift */; };
 		7835B2FD1DB969D200FB1DE2 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2FB1DB969D200FB1DE2 /* Resource.swift */; };
 		7835B2FE1DB969D200FB1DE2 /* Expectation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7835B2FC1DB969D200FB1DE2 /* Expectation.swift */; };
@@ -26,6 +25,7 @@
 		78581DE41DD07A12001AE436 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78581DE21DD07997001AE436 /* Model.swift */; };
 		78581DE61DD07FD4001AE436 /* Model.swift.out in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78581DE51DD07F90001AE436 /* Model.swift.out */; };
 		78656F841DAEE2E40055E780 /* XCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78656F831DAEE2E40055E780 /* XCTest.swift */; };
+		789482811DF03058002A5215 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7894827F1DF03034002A5215 /* Expression.swift */; };
 		78AA02361DB80DAC006BD3EB /* TypesModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 78AA02331DB80D9F006BD3EB /* TypesModel.xcdatamodeld */; };
 		78AA023B1DB80FB6006BD3EB /* TypesModel.xcdatamodeld in CopyFiles */ = {isa = PBXBuildFile; fileRef = 78AA02331DB80D9F006BD3EB /* TypesModel.xcdatamodeld */; };
 		78BA82871DB817D10001C27C /* GeneratedClassesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BA82861DB817D10001C27C /* GeneratedClassesTests.swift */; };
@@ -279,7 +279,6 @@
 
 /* Begin PBXFileReference section */
 		7835B2F41DB9636700FB1DE2 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		7835B2F61DB964A200FB1DE2 /* MotoTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MotoTemplate.swift; sourceTree = "<group>"; };
 		7835B2F81DB9696300FB1DE2 /* RendererTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RendererTests.swift; sourceTree = "<group>"; };
 		7835B2FB1DB969D200FB1DE2 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		7835B2FC1DB969D200FB1DE2 /* Expectation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expectation.swift; sourceTree = "<group>"; };
@@ -297,6 +296,7 @@
 		78581DE21DD07997001AE436 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		78581DE51DD07F90001AE436 /* Model.swift.out */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Model.swift.out; sourceTree = "<group>"; };
 		78656F831DAEE2E40055E780 /* XCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTest.swift; sourceTree = "<group>"; };
+		7894827F1DF03034002A5215 /* Expression.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		78AA02341DB80D9F006BD3EB /* TypesModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TypesModel.xcdatamodel; sourceTree = "<group>"; };
 		78BA82861DB817D10001C27C /* GeneratedClassesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedClassesTests.swift; sourceTree = "<group>"; };
 		78CD51E51DB2CB3900C76373 /* Output.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Output.swift; sourceTree = "<group>"; };
@@ -492,13 +492,14 @@
 				OBJ_18 /* PathKit.swift */,
 			);
 			name = PathKit;
-			path = "Packages/PathKit-0.7.0/Sources";
+			path = "Packages/PathKit-0.7.1/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_19 /* Stencil */ = {
 			isa = PBXGroup;
 			children = (
 				OBJ_20 /* Context.swift */,
+				7894827F1DF03034002A5215 /* Expression.swift */,
 				OBJ_21 /* Filters.swift */,
 				OBJ_22 /* ForTag.swift */,
 				OBJ_23 /* IfTag.swift */,
@@ -515,7 +516,7 @@
 				OBJ_34 /* Variable.swift */,
 			);
 			name = Stencil;
-			path = "Packages/Stencil-0.6.0/Sources";
+			path = "Packages/Stencil-0.7.1/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_35 /* Commander */ = {
@@ -542,7 +543,7 @@
 				OBJ_47 /* SWXMLHash.swift */,
 			);
 			name = SWXMLHash;
-			path = "Packages/SWXMLHash-3.0.2/Source";
+			path = "Packages/SWXMLHash-3.0.3/Source";
 			sourceTree = SOURCE_ROOT;
 		};
 		OBJ_48 /* motoswift */ = {
@@ -599,7 +600,6 @@
 			children = (
 				OBJ_60 /* Language.swift */,
 				OBJ_61 /* Model+TemplateVariables.swift */,
-				7835B2F61DB964A200FB1DE2 /* MotoTemplate.swift */,
 				7835B2F41DB9636700FB1DE2 /* Renderer.swift */,
 			);
 			path = Generator;
@@ -692,7 +692,7 @@
 				OBJ_16 /* Reporters.swift */,
 			);
 			name = Spectre;
-			path = "Packages/Spectre-0.7.1/Sources";
+			path = "Packages/Spectre-0.7.2/Sources";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -921,6 +921,7 @@
 				OBJ_122 /* Node.swift in Sources */,
 				OBJ_123 /* NowTag.swift in Sources */,
 				OBJ_124 /* Parser.swift in Sources */,
+				789482811DF03058002A5215 /* Expression.swift in Sources */,
 				OBJ_125 /* Template.swift in Sources */,
 				OBJ_126 /* TemplateLoader.swift in Sources */,
 				OBJ_127 /* Tokenizer.swift in Sources */,
@@ -980,7 +981,6 @@
 				OBJ_192 /* Attribute+XMLParser.swift in Sources */,
 				OBJ_193 /* Entity+XMLParser.swift in Sources */,
 				OBJ_194 /* FetchedProperty+XMLParser.swift in Sources */,
-				7835B2F71DB964A200FB1DE2 /* MotoTemplate.swift in Sources */,
 				OBJ_195 /* ModelParser.swift in Sources */,
 				OBJ_196 /* Relationship+XMLParser.swift in Sources */,
 				OBJ_197 /* UserInfo+XMLParser.swift in Sources */,
