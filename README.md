@@ -56,6 +56,7 @@ If you need all components in one folder run `make bundle`. Now you can copy who
 1. *Xcode* style
 
   `motoswift human --template ./Templates/class.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataClass.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  
   `motoswift machine --template ./Templates/properties.stencil --output ./SampleOutput/XCode --file-mask "{{class}}+CoreDataProperties.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
   
   [SampleOutput/Xcode](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/XCode)
@@ -63,6 +64,7 @@ If you need all components in one folder run `make bundle`. Now you can copy who
 2. *Mogenerator* style
 
   `motoswift human --template ./Templates/human.stencil --output ./SampleOutput/Human --file-mask "{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  
   `motoswift machine --template ./Templates/machine.stencil --output ./SampleOutput/Machine --file-mask "_{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
   
   [SampleOutput/Human](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Human)
