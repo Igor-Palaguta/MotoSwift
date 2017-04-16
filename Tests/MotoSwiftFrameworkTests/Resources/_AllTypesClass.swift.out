@@ -13,6 +13,9 @@ public enum AllTypesClassAttributes: String {
    case transformable
 }
 
+public enum AllTypesClassRelationships: String {
+   case properties
+}
 
 
 // swiftlint:disable type_name
@@ -26,4 +29,20 @@ public class _AllTypesClass: NumericTypesClass {
    @NSManaged public var string: String?
    @NSManaged public var transformable: NSObject?
 
+   @NSManaged public var properties: NSSet
+}
+
+extension AllTypesClass {
+
+   @objc(addPropertiesObject:)
+   @NSManaged public func addToProperties(_ value: PropertyClass)
+
+   @objc(removePropertiesObject:)
+   @NSManaged public func removeFromProperties(_ value: PropertyClass)
+
+   @objc(addProperties:)
+   @NSManaged public func addToProperties(_ values: NSSet)
+
+   @objc(removeProperties:)
+   @NSManaged public func removeFromProperties(_ values: NSSet)
 }

@@ -78,6 +78,33 @@ func testGeneratedCode() {
          try expect(scalarTypes.value(forKey: CoreDataEntity.ScalarTypes.Field.double) as? Double).to.beClose(to: 7.8)
          try expect(allTypes.value(forKey: CoreDataEntity.AllTypes.Field.double) as? Double).to.beClose(to: 9.1)
       }
+
+      $0.it("supports relationship operations") {
+         let context = try createContext()
+         let types = NSEntityDescription.insertNewObject(forEntityName: AllTypesClass.entityName, into: context) as! AllTypesClass
+         let property1 = NSEntityDescription.insertNewObject(forEntityName: CoreDataEntity.Property.name, into: context) as! PropertyClass
+         property1.name = "name1"
+         property1.value = "value1"
+         types.addToProperties(property1)
+         try expect(types.properties.isEqual(to: NSSet(object: property1))).to.beTrue()
+
+         let property2 = NSEntityDescription.insertNewObject(forEntityName: CoreDataEntity.Property.name, into: context) as! PropertyClass
+         property1.name = "name2"
+         property1.value = "value2"
+
+         let property3 = NSEntityDescription.insertNewObject(forEntityName: CoreDataEntity.Property.name, into: context) as! PropertyClass
+         property1.name = "name3"
+         property1.value = "value3"
+         types.addToProperties(NSSet(array: [property2, property3]))
+
+         try expect(types.properties.isEqual(to: NSSet(objects: [property1, property2, property3]))).to.beTrue()
+
+         types.removeFromProperties(property2)
+         try expect(types.properties.isEqual(to: NSSet(objects: [property1, property3]))).to.beTrue()
+
+         types.removeFromProperties(NSSet(array: [property1, property3]))
+         try expect(types.properties.count) == 0
+      }
    }
 }
 

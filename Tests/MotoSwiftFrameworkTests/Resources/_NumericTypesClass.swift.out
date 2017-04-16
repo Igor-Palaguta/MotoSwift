@@ -37,3 +37,4 @@ public class _NumericTypesClass: NSManagedObject {
 
    @NSManaged public var scalars: ScalarTypesClass
 }
+

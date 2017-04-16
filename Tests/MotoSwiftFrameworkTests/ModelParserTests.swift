@@ -18,11 +18,14 @@ func testModelParser() {
 }
 
 private func test(typeModel model: Model) throws {
-   try expect(model.entities.count) == 3
+   try expect(model.entities.count) == 4
    let allTypesEntity = model.index["AllTypes"]!
    try expect(allTypesEntity.name) == "AllTypes"
    try expect(allTypesEntity.className) == "AllTypesClass"
-   try expect(allTypesEntity.relationships.isEmpty).to.beTrue()
+
+   let properties = Relationship(name: "properties", entityName: "Property", isOptional: true, toMany: true, isOrdered: false, userInfo: [:])
+
+   try expect(allTypesEntity.relationships).to.containsSameElements(with: [properties])
 
    let nonNumericTypesMapping: [AttributeType: String] = [.Binary: "data",
                                                           .Date: "date",

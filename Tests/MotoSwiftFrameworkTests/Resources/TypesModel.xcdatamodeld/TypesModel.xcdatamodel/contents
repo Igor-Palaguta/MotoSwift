@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11538.1" systemVersion="15F34" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AllTypes" representedClassName="AllTypesClass" parentEntity="NumericTypes" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="string" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="transformable" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <relationship name="properties" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Property" inverseName="types" inverseEntity="Property" syncable="YES"/>
         <userInfo>
             <entry key="description" value="all types"/>
         </userInfo>
@@ -21,6 +22,11 @@
         <userInfo>
             <entry key="description" value="all numeric types"/>
         </userInfo>
+    </entity>
+    <entity name="Property" representedClassName="PropertyClass" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="value" attributeType="String" syncable="YES"/>
+        <relationship name="types" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AllTypes" inverseName="properties" inverseEntity="AllTypes" syncable="YES"/>
     </entity>
     <entity name="ScalarTypes" representedClassName="ScalarTypesClass" syncable="YES">
         <attribute name="boolean" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
@@ -41,8 +47,9 @@
         </userInfo>
     </entity>
     <elements>
-        <element name="AllTypes" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="AllTypes" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="NumericTypes" positionX="-54" positionY="72" width="128" height="165"/>
         <element name="ScalarTypes" positionX="-9" positionY="117" width="128" height="194"/>
+        <element name="Property" positionX="-36" positionY="126" width="128" height="90"/>
     </elements>
 </model>

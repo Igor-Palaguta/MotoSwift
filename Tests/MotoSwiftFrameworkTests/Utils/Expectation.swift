@@ -8,7 +8,7 @@ extension ExpectationType where ValueType: Collection, ValueType.Iterator.Elemen
       if let value = value, value.count == other.count && !value.contains { !other.contains($0) } {
          //passed
       } else {
-         throw failure("\(value) does not containsSameElements with \(other)")
+         throw failure("\(String(describing: value)) does not containsSameElements with \(other)")
       }
    }
 }
@@ -20,7 +20,7 @@ extension ExpectationType where ValueType: FloatingPoint {
       if let value = value, abs(value - expectedValue) < delta {
          //passed
       } else {
-         throw failure("\(value) is not beClose \(expectedValue)")
+         throw failure("\(String(describing: value)) is not beClose \(expectedValue)")
       }
    }
 }

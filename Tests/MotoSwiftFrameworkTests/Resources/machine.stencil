@@ -66,3 +66,22 @@ public class _{{ class }}: {% if parent.class %}{{ parent.class }}{% else %}NSMa
    {% endif %}
    {% endfor %}
 }
+
+{% for relationship in relationships %}
+{% if relationship.toMany %}
+extension {{ class }} {
+
+   @objc(add{{ relationship.name | capitalize }}Object:)
+   @NSManaged public func addTo{{ relationship.name | capitalize }}(_ value: {{ relationship.class }})
+
+   @objc(remove{{ relationship.name | capitalize }}Object:)
+   @NSManaged public func removeFrom{{ relationship.name | capitalize }}(_ value: {{ relationship.class }})
+
+   @objc(add{{ relationship.name | capitalize }}:)
+   @NSManaged public func addTo{{ relationship.name | capitalize }}(_ values: NSSet)
+
+   @objc(remove{{ relationship.name | capitalize }}:)
+   @NSManaged public func removeFrom{{ relationship.name | capitalize }}(_ values: NSSet)
+}
+{% endif %}
+{% endfor %}

@@ -15,6 +15,7 @@ public struct CoreDataEntity {
          public static let date = "date"
          public static let string = "string"
          public static let transformable = "transformable"
+         public static let properties = "properties"
       }
    }
    public struct NumericTypes {
@@ -29,6 +30,15 @@ public struct CoreDataEntity {
          public static let int32 = "int32"
          public static let int64 = "int64"
          public static let scalars = "scalars"
+      }
+   }
+   public struct Property {
+      public static let name = "Property"
+
+      public class Field {
+         public static let name = "name"
+         public static let value = "value"
+         public static let types = "types"
       }
    }
    public struct ScalarTypes {

@@ -57,3 +57,4 @@ public class _ScalarTypesClass: NSManagedObject {
 
    @NSManaged public var numerics: NumericTypesClass
 }
+
