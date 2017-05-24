@@ -2,12 +2,12 @@ import Foundation
 
 extension Model {
    func templateVariables(for entity: Entity) throws -> [String: Any] {
-      return try entity.templateVariables(language: .Swift, model: self)
+      return try entity.templateVariables(language: .swift, model: self)
    }
 
    func templateVariables() throws -> [String: Any] {
       let entitiesContexts = try self.entities.map {
-         try $0.templateVariables(language: .Swift, model: self)
+         try $0.templateVariables(language: .swift, model: self)
       }
 
       return ["entities": entitiesContexts]

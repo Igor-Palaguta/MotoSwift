@@ -37,6 +37,7 @@ playground.xcworkspace
 Packages/
 Package.pins
 .build/
+MotoSwift.xcodeproj
 
 # CocoaPods
 #

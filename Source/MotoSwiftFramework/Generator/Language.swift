@@ -1,64 +1,64 @@
 import Foundation
 
 enum Language {
-   case Swift
-   case ObjC
+   case swift
+   case objc
 
    func scalarType(for type: AttributeType) -> String? {
       switch (self, type) {
-      case (.Swift, .Boolean):
+      case (.swift, .boolean):
          return "Bool"
-      case (.ObjC, .Boolean):
+      case (.objc, .boolean):
          return "BOOL"
-      case (.Swift, .Double):
+      case (.swift, .double):
          return "Double"
-      case (.ObjC, .Double):
+      case (.objc, .double):
          return "double"
-      case (.Swift, .Float):
+      case (.swift, .float):
          return "Float"
-      case (.ObjC, .Float):
+      case (.objc, .float):
          return "float"
-      case (.Swift, .Integer16):
+      case (.swift, .integer16):
          return "Int16"
-      case (.ObjC, .Integer16):
+      case (.objc, .integer16):
          return "int16_t"
-      case (.Swift, .Integer32):
+      case (.swift, .integer32):
          return "Int32"
-      case (.ObjC, .Integer32):
+      case (.objc, .integer32):
          return "int32_t"
-      case (.Swift, .Integer64):
+      case (.swift, .integer64):
          return "Int64"
-      case (.ObjC, .Integer64):
+      case (.objc, .integer64):
          return "int64_t"
-      case (_, .Binary),
-           (_, .Date),
-           (_, .Decimal),
-           (_, .String),
-           (_, .Transformable):
+      case (_, .binary),
+           (_, .date),
+           (_, .decimal),
+           (_, .string),
+           (_, .transformable):
          return nil
       }
    }
 
    func type(for type: AttributeType) -> String {
       switch (self, type) {
-      case (_, .Binary):
+      case (_, .binary):
          return "NSData"
-      case (_, .Date):
+      case (_, .date):
          return "NSDate"
-      case (_, .Decimal):
+      case (_, .decimal):
          return "NSDecimalNumber"
-      case (.Swift, .String):
+      case (.swift, .string):
          return "String"
-      case (.ObjC, .String):
+      case (.objc, .string):
          return "NSString"
-      case (_, .Transformable):
+      case (_, .transformable):
          return "NSObject"
-      case (_, .Boolean),
-           (_, .Double),
-           (_, .Float),
-           (_, .Integer16),
-           (_, .Integer32),
-           (_, .Integer64):
+      case (_, .boolean),
+           (_, .double),
+           (_, .float),
+           (_, .integer16),
+           (_, .integer32),
+           (_, .integer64):
          return "NSNumber"
       }
    }

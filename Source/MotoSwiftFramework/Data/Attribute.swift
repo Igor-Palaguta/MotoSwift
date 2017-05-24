@@ -1,17 +1,17 @@
 import Foundation
 
 public enum AttributeType {
-   case Binary
-   case Boolean
-   case Date
-   case Decimal
-   case Double
-   case Float
-   case Integer16
-   case Integer32
-   case Integer64
-   case String
-   case Transformable
+   case binary
+   case boolean
+   case date
+   case decimal
+   case double
+   case float
+   case integer16
+   case integer32
+   case integer64
+   case string
+   case transformable
 }
 
 public struct Attribute: Equatable {

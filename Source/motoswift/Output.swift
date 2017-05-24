@@ -2,23 +2,23 @@ import Foundation
 import PathKit
 
 enum Output {
-   case Console
-   case File(Path)
+   case console
+   case file(Path)
 
    var exists: Bool {
       switch self {
-      case .Console:
+      case .console:
          return false
-      case .File(let path):
+      case .file(let path):
          return path.exists
       }
    }
 
    func write(text: String) throws {
       switch self {
-      case .Console:
+      case .console:
          print(text)
-      case .File(let path):
+      case .file(let path):
          if !path.parent().exists {
             try path.parent().mkpath()
          }

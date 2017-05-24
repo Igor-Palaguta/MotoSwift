@@ -13,8 +13,8 @@ let modelCommand = command(
    let renderer = try Renderer(templatePath: templatePath)
 
    let fileOutput: Output = output.isEmpty
-      ? .Console
-      : .File(Path(output))
+      ? .console
+      : .file(Path(output))
 
    let code = try renderer.render(model: model)
 

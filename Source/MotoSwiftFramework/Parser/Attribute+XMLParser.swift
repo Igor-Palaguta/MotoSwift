@@ -11,17 +11,17 @@ extension Attribute {
    }
 }
 
-private let typesMapping: [String: AttributeType] = ["Boolean": .Boolean,
-                                                     "Binary": .Binary,
-                                                     "Date": .Date,
-                                                     "Decimal": .Decimal,
-                                                     "Double": .Double,
-                                                     "Float": .Float,
-                                                     "Integer 16": .Integer16,
-                                                     "Integer 32": .Integer32,
-                                                     "Integer 64": .Integer64,
-                                                     "String": .String,
-                                                     "Transformable": .Transformable]
+private let typesMapping: [String: AttributeType] = ["Boolean": .boolean,
+                                                     "Binary": .binary,
+                                                     "Date": .date,
+                                                     "Decimal": .decimal,
+                                                     "Double": .double,
+                                                     "Float": .float,
+                                                     "Integer 16": .integer16,
+                                                     "Integer 32": .integer32,
+                                                     "Integer 64": .integer64,
+                                                     "String": .string,
+                                                     "Transformable": .transformable]
 
 extension AttributeType {
    fileprivate init(stringValue: String) throws {

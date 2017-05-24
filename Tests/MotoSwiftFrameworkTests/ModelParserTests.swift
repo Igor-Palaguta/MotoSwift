@@ -27,10 +27,10 @@ private func test(typeModel model: Model) throws {
 
    try expect(allTypesEntity.relationships).to.containsSameElements(with: [properties])
 
-   let nonNumericTypesMapping: [AttributeType: String] = [.Binary: "data",
-                                                          .Date: "date",
-                                                          .String: "string",
-                                                          .Transformable: "transformable"]
+   let nonNumericTypesMapping: [AttributeType: String] = [.binary: "data",
+                                                          .date: "date",
+                                                          .string: "string",
+                                                          .transformable: "transformable"]
 
    let nonNumericAttributes: [Attribute] = nonNumericTypesMapping.map {
       Attribute(name: $1,
@@ -45,13 +45,13 @@ private func test(typeModel model: Model) throws {
    try expect(allTypesEntity.userInfo) == ["description": "all types"]
 
    let numericTypesEntity = model.index["NumericTypes"]!
-   let numericTypesMapping: [AttributeType: String] = [.Boolean: "boolean",
-                                                       .Decimal: "decimal",
-                                                       .Double: "double",
-                                                       .Float: "float",
-                                                       .Integer16: "int16",
-                                                       .Integer32: "int32",
-                                                       .Integer64: "int64"]
+   let numericTypesMapping: [AttributeType: String] = [.boolean: "boolean",
+                                                       .decimal: "decimal",
+                                                       .double: "double",
+                                                       .float: "float",
+                                                       .integer16: "int16",
+                                                       .integer32: "int32",
+                                                       .integer64: "int64"]
 
    let numericAttributes: [Attribute] = numericTypesMapping.map {
       Attribute(name: $1,
@@ -66,7 +66,7 @@ private func test(typeModel model: Model) throws {
    let scalarTypesEntity = model.index["ScalarTypes"]!
 
    let scalarAttributes: [Attribute] = numericTypesMapping
-      .filter { $0.key != .Decimal }
+      .filter { $0.key != .decimal }
       .map { Attribute(name: $1, type: $0, isOptional: false, isScalar: true, userInfo: [:]) }
 
 

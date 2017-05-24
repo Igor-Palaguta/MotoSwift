@@ -4,17 +4,17 @@ import PathKit
 
 public final class Renderer {
    private let template: Template
-   private let namespace: Namespace
    private let fileName: String
 
    public init(templatePath: Path) throws {
       let templateString: String = try templatePath.read()
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
-      self.template = Template(templateString: templateString)
 
-      self.namespace = Namespace()
-      self.namespace.registerFilter("titlecase", filter: StringFilters.titlecase)
+      let ext = Extension()
+      ext.registerFilter("titlecase", filter: StringFilters.titlecase)
+
+      self.template = Template(templateString: templateString, environment: Environment(extensions: [ext]))
 
       self.fileName = templatePath.lastComponent
    }
@@ -30,14 +30,13 @@ public final class Renderer {
    private func render(variables: [String: Any]) throws -> String {
       var variables = variables
       variables["file"] = self.fileName
-      let renderedTemplate = try self.template.render(Context(dictionary: variables,
-                                                              namespace: self.namespace))
+      let renderedTemplate = try self.template.render(variables)
 
-      return self.removeExtraLines(renderedTemplate)
+      return self.removeExtraLines(from: renderedTemplate)
    }
 
    // Workaround until Stencil fixes https://github.com/kylef/Stencil/issues/22
-   private func removeExtraLines(_ str: String) -> String {
+   private func removeExtraLines(from str: String) -> String {
       let extraLinesRE: NSRegularExpression = {
          do {
             return try NSRegularExpression(pattern: "\\n([ \\t]*\\n)+", options: [])
@@ -57,14 +56,12 @@ public final class Renderer {
    }
 }
 
-enum FilterError: Error {
-   case invalidInputType
-}
+struct FilterInvalidType: Error {}
 
 private struct StringFilters {
 
    static func titlecase(value: Any?) throws -> Any? {
-      guard let string = value as? String else { throw FilterError.invalidInputType }
+      guard let string = value as? String else { throw FilterInvalidType() }
       return titlecase(string: string)
    }
 

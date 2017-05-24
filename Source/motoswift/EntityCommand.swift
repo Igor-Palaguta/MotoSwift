@@ -3,35 +3,35 @@ import MotoSwiftFramework
 import Commander
 import PathKit
 
-let humanCommand = command(forFile: .Human)
-let machineCommand = command(forFile: .Machine)
+let humanCommand = command(for: .human)
+let machineCommand = command(for: .machine)
 
 private let classPlaceholder = "{{class}}"
 
 private enum EntityFile {
-   case Machine
-   case Human
+   case machine
+   case human
 
    var defaultMask: String {
       switch self {
-      case .Machine:
+      case .machine:
          return "\(classPlaceholder)+Properties.swift"
-      case .Human:
+      case .human:
          return "\(classPlaceholder).swift"
       }
    }
 
    var isRewritable: Bool {
       switch self {
-      case .Machine:
+      case .machine:
          return true
-      case .Human:
+      case .human:
          return false
       }
    }
 }
 
-private func command(forFile fileType: EntityFile) -> CommandType {
+private func command(for fileType: EntityFile) -> CommandType {
    return command(
       Option<Path>("template", "", description: "Path to entity template."),
       Option<String>("file-mask", fileType.defaultMask,
@@ -58,7 +58,7 @@ private func command(forFile fileType: EntityFile) -> CommandType {
          }
          let fileName = fileMask.replacingOccurrences(of: classPlaceholder, with: className)
          let entityFilePath = outputDir + fileName
-         let fileOutput: Output = .File(entityFilePath)
+         let fileOutput: Output = .file(entityFilePath)
          if fileOutput.exists && !fileType.isRewritable {
             continue
          }
@@ -69,4 +69,3 @@ private func command(forFile fileType: EntityFile) -> CommandType {
       }
    }
 }
-
