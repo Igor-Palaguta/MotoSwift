@@ -2,7 +2,7 @@ import Foundation
 import Commander
 
 private final class Application {
-   let version = "0.2.3"
+   let version = "0.3.0"
 
    func run() {
       let main = Group {
