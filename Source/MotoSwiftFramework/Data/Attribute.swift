@@ -12,6 +12,24 @@ public enum AttributeType {
    case integer64
    case string
    case transformable
+
+   var isInteger: Bool {
+      switch self {
+      case .integer16, .integer32, .integer64:
+         return true
+      default:
+         return false
+      }
+   }
+
+   var isFloat: Bool {
+      switch self {
+      case .float, .double:
+         return true
+      default:
+         return false
+      }
+   }
 }
 
 public struct Attribute: Equatable {

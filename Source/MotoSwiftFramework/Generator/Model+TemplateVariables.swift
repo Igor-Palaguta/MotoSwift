@@ -42,9 +42,12 @@ extension Entity: TemplateContext {
 extension Attribute: TemplateContext {
    func templateVariables(language: Language, model: Model) throws -> [String: Any] {
       var context: [String: Any] = ["name": self.name,
-                                    "type": language.type(for: self.type),
+                                    "type": language.scalarType(for: self.type) ?? language.objectType(for: self.type),
+                                    "objectType": language.objectType(for: self.type),
                                     "isOptional": self.isOptional,
-                                    "isScalar": self.isScalar]
+                                    "isScalar": self.isScalar,
+                                    "isInteger": self.type.isInteger,
+                                    "isFloat": self.type.isFloat]
       context["scalarType"] = language.scalarType(for: self.type)
       return context + self.userInfo
    }

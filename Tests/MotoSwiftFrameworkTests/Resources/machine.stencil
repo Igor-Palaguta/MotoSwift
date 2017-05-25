@@ -55,7 +55,7 @@ public class _{{ class }}: {% if parent.class %}{{ parent.class }}{% else %}NSMa
    }
 
    {% for attribute in attributes %}
-   @NSManaged public var {{ attribute.name }}: {% if attribute.isScalar %}{{ attribute.scalarType }}{% else %}{{ attribute.type }}{% if attribute.isOptional %}?{% endif %}{% endif %}
+   @NSManaged public var {{ attribute.name }}: {% if attribute.isScalar %}{{ attribute.scalarType }}{% else %}{{ attribute.objectType }}{% if attribute.isOptional %}?{% endif %}{% endif %}
    {% endfor %}
 
    {% for relationship in relationships %}

@@ -11,10 +11,7 @@ public final class Renderer {
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
 
-      let ext = Extension()
-      ext.registerFilter("titlecase", filter: StringFilters.titlecase)
-
-      self.template = Template(templateString: templateString, environment: Environment(extensions: [ext]))
+      self.template = Template(templateString: templateString)
 
       self.fileName = templatePath.lastComponent
    }
@@ -53,20 +50,5 @@ public final class Renderer {
          .replacingOccurrences(of: "\n\u{000b}\n", with: "\n\n")
          .replacingOccurrences(of: "\n\u{000b}\n", with: "\n\n")
       return unmarkedNewlines
-   }
-}
-
-struct FilterInvalidType: Error {}
-
-private struct StringFilters {
-
-   static func titlecase(value: Any?) throws -> Any? {
-      guard let string = value as? String else { throw FilterInvalidType() }
-      return titlecase(string: string)
-   }
-
-   static func titlecase(string: String) -> String {
-      guard let first = string.unicodeScalars.first else { return string }
-      return String(first).uppercased() + String(string.unicodeScalars.dropFirst())
    }
 }

@@ -97,10 +97,10 @@ func testGeneratedCode() {
          property1.value = "value3"
          types.addToProperties(NSSet(array: [property2, property3]))
 
-         try expect(types.properties.isEqual(to: NSSet(objects: [property1, property2, property3]))).to.beTrue()
+         try expect(types.properties.containsJust([property1, property2, property3])).to.beTrue()
 
          types.removeFromProperties(property2)
-         try expect(types.properties.isEqual(to: NSSet(objects: [property1, property3]))).to.beTrue()
+         try expect(types.properties.containsJust([property1, property3])).to.beTrue()
 
          types.removeFromProperties(NSSet(array: [property1, property3]))
          try expect(types.properties.count) == 0
@@ -119,4 +119,13 @@ private func createContext() throws -> NSManagedObjectContext {
    let context = NSManagedObjectContext()
    context.persistentStoreCoordinator = coordinator
    return context
+}
+
+extension NSSet {
+   func containsJust(_ elements: [Any]) -> Bool {
+      guard self.count == elements.count else {
+         return false
+      }
+      return !elements.contains { !self.contains($0) }
+   }
 }

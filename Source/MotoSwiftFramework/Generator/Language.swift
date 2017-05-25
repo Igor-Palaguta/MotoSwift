@@ -39,7 +39,7 @@ enum Language {
       }
    }
 
-   func type(for type: AttributeType) -> String {
+   func objectType(for type: AttributeType) -> String {
       switch (self, type) {
       case (_, .binary):
          return "NSData"
