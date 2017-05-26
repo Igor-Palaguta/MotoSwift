@@ -16,7 +16,7 @@ let modelCommand = command(
       ? .console
       : .file(Path(output))
 
-   let code = try renderer.render(model: model)
+   let code = try renderer.render(model)
 
    try fileOutput.write(text: code)
 }

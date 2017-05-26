@@ -15,7 +15,7 @@ func testRenderer() {
             guard let className = entity.className else {
                return
             }
-            let code = try renderer.render(entity: entity, from: model)
+            let code = try renderer.render(entity, from: model)
             let expectedEntityPath = path(forResource: "_\(className)", ofType: "swift.out")
             let expectedCode: String = try expectedEntityPath.read()
             try expect(code) == expectedCode
@@ -25,7 +25,7 @@ func testRenderer() {
          let templatePath = path(forResource: "model", ofType: "stencil")
          let renderer = try Renderer(templatePath: templatePath)
 
-         let code = try renderer.render(model: model)
+         let code = try renderer.render(model)
          let expectedEntityPath = path(forResource: "Model", ofType: "swift.out")
          let expectedCode: String = try expectedEntityPath.read()
          try expect(code) == expectedCode

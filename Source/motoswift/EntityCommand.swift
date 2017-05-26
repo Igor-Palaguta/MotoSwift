@@ -63,7 +63,7 @@ private func command(for fileType: EntityFile) -> CommandType {
             continue
          }
 
-         let code = try renderer.render(entity: entity, from: model)
+         let code = try renderer.render(entity, from: model)
 
          try fileOutput.write(text: code)
       }

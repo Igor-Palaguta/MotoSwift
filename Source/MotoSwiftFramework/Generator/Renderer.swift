@@ -16,15 +16,15 @@ public final class Renderer {
       self.fileName = templatePath.lastComponent
    }
 
-   public func render(entity: Entity, from model: Model) throws -> String {
-      return try self.render(variables: try model.templateVariables(for: entity))
+   public func render(_ entity: Entity, from model: Model) throws -> String {
+      return try self.render(try model.variables(for: entity))
    }
 
-   public func render(model: Model) throws -> String {
-      return try self.render(variables: try model.templateVariables())
+   public func render(_ model: Model) throws -> String {
+      return try self.render(try model.variables())
    }
 
-   private func render(variables: [String: Any]) throws -> String {
+   private func render(_ variables: [String: Any]) throws -> String {
       var variables = variables
       variables["file"] = self.fileName
       let renderedTemplate = try self.template.render(variables)
