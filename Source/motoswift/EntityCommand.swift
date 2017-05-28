@@ -43,10 +43,10 @@ private func command(for fileType: EntityFile) -> CommandType {
    ) { templatePath, fileMask, outputDir, modelPath in
 
       if !fileMask.contains(classPlaceholder) {
-         throw ArgumentError.invalidFileNameFormat(actual: fileMask, placeholder: classPlaceholder)
+         throw InvalidFileFormat(actual: fileMask, placeholder: classPlaceholder)
       }
 
-      let model = try ModelParser().parseModel(fromPath: modelPath)
+      let model = try ModelParser().parseModel(at: modelPath)
 
       let renderer = try Renderer(templatePath: templatePath)
 
@@ -67,5 +67,14 @@ private func command(for fileType: EntityFile) -> CommandType {
 
          try fileOutput.write(text: code)
       }
+   }
+}
+
+private struct InvalidFileFormat: Error, CustomStringConvertible {
+   let actual: String
+   let placeholder: String
+
+   var description: String {
+      return "\"\(actual)\" - invalid file name mask format. Should contain \"\(placeholder)\""
    }
 }

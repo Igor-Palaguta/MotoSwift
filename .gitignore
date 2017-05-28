@@ -5,6 +5,7 @@
 ## Build generated
 build/
 DerivedData/
+motoswift/
 
 ## Various settings
 *.pbxuser

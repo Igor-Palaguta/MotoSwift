@@ -2,12 +2,12 @@ import Foundation
 
 extension Model {
    func variables(for entity: Entity) throws -> [String: Any] {
-      return try entity.variables(for: .swift, self)
+      return try entity.variables(with: .swift, index: self.index)
    }
 
    func variables() throws -> [String: Any] {
       let entitiesContexts = try self.entities.map {
-         try $0.variables(for: .swift, self)
+         try $0.variables(with: .swift, index: self.index)
       }
 
       return ["entities": entitiesContexts]
@@ -15,38 +15,38 @@ extension Model {
 }
 
 protocol Serializable {
-   func variables(for language: Language, _ model: Model) throws -> [String: Any]
+   func variables(with language: Language, index: [String: Entity]) throws -> [String: Any]
 }
 
 extension Entity: Serializable {
-   fileprivate func ownVariables(for language: Language, _ model: Model) throws -> [String: Any] {
+   fileprivate func variables(with language: Language) throws -> [String: Any] {
       var context: [String: Any] = self.userInfo
       context["name"] = self.name
       context["class"] = self.className
       return context
    }
 
-   func variables(for language: Language, _ model: Model) throws -> [String: Any] {
-      var context = try self.ownVariables(for: language, model)
+   func variables(with language: Language, index: [String: Entity]) throws -> [String: Any] {
+      var context = try self.variables(with: language)
       if let parentEntityName = self.parentEntityName,
-         let parentEntity = model.index[parentEntityName] {
-         context["parent"] = try parentEntity.variables(for: language, model)
+         let parent = index[parentEntityName] {
+         context["parent"] = try parent.variables(with: language, index: index)
       }
       context["attributes"] = try self.attributes.map {
-         try $0.variables(for: language, model)
+         try $0.variables(with: language, index: index)
       }
       context["relationships"] = try self.relationships.map {
-         try $0.variables(for: language, model)
+         try $0.variables(with: language, index: index)
       }
       context["fetchedProperties"] = try self.fetchedProperties.map {
-         try $0.variables(for: language, model)
+         try $0.variables(with: language, index: index)
       }
       return context
    }
 }
 
 extension Attribute: Serializable {
-   func variables(for language: Language, _ model: Model) throws -> [String: Any] {
+   func variables(with language: Language, index: [String: Entity]) throws -> [String: Any] {
       var context: [String: Any] = ["name": self.name,
                                     "type": language.scalarType(for: self.type) ?? language.objectType(for: self.type),
                                     "objectType": language.objectType(for: self.type),
@@ -60,28 +60,28 @@ extension Attribute: Serializable {
 }
 
 extension Relationship: Serializable {
-   func variables(for language: Language, _ model: Model) throws -> [String: Any] {
+   func variables(with language: Language, index: [String: Entity]) throws -> [String: Any] {
       var context: [String: Any] = ["name": self.name,
                                     "entityName": self.entityName,
                                     "isOptional": self.isOptional,
                                     "toMany": self.toMany,
                                     "isOrdered": self.isOrdered]
-      if let entity = model.index[self.entityName] {
+      if let entity = index[self.entityName] {
          context["class"] = entity.className
-         context["entity"] = try entity.ownVariables(for: language, model)
+         context["entity"] = try entity.variables(with: language)
       }
       return context + self.userInfo
    }
 }
 
 extension FetchedProperty: Serializable {
-   func variables(for language: Language, _ model: Model) throws -> [String: Any] {
+   func variables(with language: Language, index: [String: Entity]) throws -> [String: Any] {
       var context: [String: Any] = ["name": self.name,
                                     "entityName": self.entityName,
                                     "predicateString": self.predicateString]
-      if let entity = model.index[self.entityName] {
+      if let entity = index[self.entityName] {
          context["class"] = entity.className
-         context["entity"] = try entity.ownVariables(for: language, model)
+         context["entity"] = try entity.variables(with: language)
       }
       return context + self.userInfo
    }

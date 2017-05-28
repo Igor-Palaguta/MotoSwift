@@ -26,8 +26,15 @@ private let typesMapping: [String: AttributeType] = ["Boolean": .boolean,
 extension AttributeType {
    fileprivate init(stringValue: String) throws {
       guard let type = typesMapping[stringValue] else {
-         throw MotoError.unknownAttributeType(stringValue)
+         throw UnknownAttributeType(type: stringValue)
       }
       self = type
+   }
+}
+
+private struct UnknownAttributeType: Error, CustomStringConvertible {
+   let type: String
+   public var description: String {
+      return "Unexpected attribute type: '\(type)'"
    }
 }

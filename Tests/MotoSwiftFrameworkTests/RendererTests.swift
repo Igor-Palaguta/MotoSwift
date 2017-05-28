@@ -5,7 +5,7 @@ import Spectre
 func testRenderer() {
    describe("Renderer") {
       let modelPath = path(forResource: "TypesModel", ofType: "xcdatamodeld")
-      let model = try! ModelParser().parseModel(fromPath: modelPath)
+      let model = try! ModelParser().parseModel(at: modelPath)
 
       $0.it("renders entity") {
          let templatePath = path(forResource: "machine", ofType: "stencil")

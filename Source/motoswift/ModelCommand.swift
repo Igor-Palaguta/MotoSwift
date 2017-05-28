@@ -9,7 +9,7 @@ let modelCommand = command(
    Argument<Path>("FILE", description: "CoreData model to parse.")
 ) { output, templatePath, modelPath in
 
-   let model = try ModelParser().parseModel(fromPath: modelPath)
+   let model = try ModelParser().parseModel(at: modelPath)
    let renderer = try Renderer(templatePath: templatePath)
 
    let fileOutput: Output = output.isEmpty

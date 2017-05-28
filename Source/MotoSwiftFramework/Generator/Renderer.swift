@@ -4,7 +4,7 @@ import PathKit
 
 public final class Renderer {
    private let template: Template
-   private let fileName: String
+   private let commonVariables: [String: String]
 
    public init(templatePath: Path) throws {
       let templateString: String = try templatePath.read()
@@ -13,7 +13,7 @@ public final class Renderer {
 
       self.template = Template(templateString: templateString)
 
-      self.fileName = templatePath.lastComponent
+      self.commonVariables = ["file": templatePath.lastComponent]
    }
 
    public func render(_ entity: Entity, from model: Model) throws -> String {
@@ -25,10 +25,8 @@ public final class Renderer {
    }
 
    private func render(_ variables: [String: Any]) throws -> String {
-      var variables = variables
-      variables["file"] = self.fileName
+      let variables = variables + self.commonVariables
       let renderedTemplate = try self.template.render(variables)
-
       return self.removeExtraLines(from: renderedTemplate)
    }
 

@@ -7,8 +7,8 @@ public final class ModelParser {
    public init() {
    }
 
-   public func parseModel(fromPath path: Path) throws -> Model {
-      let path = try currentVersion(forModelPath: path) + "contents"
+   public func parseModel(at path: Path) throws -> Model {
+      let path = try currentModelVersion(at: path) + "contents"
 
       let content: String = try path.read()
       let xml = SWXMLHash.parse(content)
@@ -16,23 +16,40 @@ public final class ModelParser {
       return Model(entities)
    }
 
-   private func currentVersion(forModelPath modelPath: Path) throws -> Path {
-      switch modelPath.extension {
+   private func currentModelVersion(at path: Path) throws -> Path {
+      switch path.extension {
       case .some("xcdatamodel"):
-         return modelPath
+         return path
       case .some("xcdatamodeld"):
-         let versionFilePath = modelPath + ".xccurrentversion"
+         let versionFilePath = path + ".xccurrentversion"
          guard versionFilePath.exists else {
-            return modelPath + "\(modelPath.lastComponentWithoutExtension).xcdatamodel"
+            return path + "\(path.lastComponentWithoutExtension).xcdatamodel"
          }
          let versionKey = "_XCCurrentVersionName"
          guard let plist = NSDictionary(contentsOfFile: String(describing: versionFilePath)),
             let versionFile = plist[versionKey] as? String else {
-               throw MotoError.absentPlistKey(key: versionKey, plistPath: String(describing: versionFilePath))
+               throw AbsentPlistKey(key: versionKey, path: versionFilePath)
          }
-         return modelPath + versionFile
+         return path + versionFile
       default:
-         throw MotoError.invalidModelType(String(describing: modelPath))
+         throw InvalidModelType(path: path)
       }
+   }
+}
+
+private struct AbsentPlistKey: Error, CustomStringConvertible {
+   let key: String
+   let path: Path
+
+   var description: String {
+      return "'\(key)' absent in \(path.string)"
+   }
+}
+
+private struct InvalidModelType: Error, CustomStringConvertible {
+   let path: Path
+
+   public var description: String {
+      return "Invalid model type: '\(path)'"
    }
 }
