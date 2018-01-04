@@ -12,7 +12,7 @@ public final class ModelParser {
 
       let content: String = try path.read()
       let xml = SWXMLHash.parse(content)
-      let entities: [Entity] = try xml["model"]["entity"].map { try Entity(xml: $0) }
+      let entities: [Entity] = try xml["model"]["entity"].all.map { try Entity(xml: $0) }
       return Model(entities)
    }
 
