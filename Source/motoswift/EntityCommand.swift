@@ -48,7 +48,7 @@ private func command(for fileType: EntityFile) -> CommandType {
 
       let model = try ModelParser().parseModel(at: modelPath)
 
-      let renderer = try Renderer(templatePath: templatePath)
+      let renderer = try Renderer(templatePath: templatePath, modelPath: modelPath)
 
       try outputDir.mkpath()
 

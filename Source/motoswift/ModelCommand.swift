@@ -10,7 +10,7 @@ let modelCommand = command(
 ) { output, templatePath, modelPath in
 
    let model = try ModelParser().parseModel(at: modelPath)
-   let renderer = try Renderer(templatePath: templatePath)
+let renderer = try Renderer(templatePath: templatePath, modelPath: modelPath)
 
    let fileOutput: Output = output.isEmpty
       ? .console

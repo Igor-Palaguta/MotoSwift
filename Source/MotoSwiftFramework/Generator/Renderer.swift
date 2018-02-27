@@ -1,19 +1,21 @@
 import Foundation
 import Stencil
 import PathKit
+import StencilSwiftKit
 
 public final class Renderer {
-   private let template: Template
+   private let template: StencilSwiftKit.StencilSwiftTemplate
    private let commonVariables: [String: String]
 
-   public init(templatePath: Path) throws {
+    public init(templatePath: Path, modelPath: Path) throws {
       let templateString: String = try templatePath.read()
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
          .replacingOccurrences(of: "\n\n", with: "\n\u{000b}\n")
+    let env = stencilSwiftEnvironment()
+    self.template = StencilSwiftKit.StencilSwiftTemplate(templateString: templateString, environment: env)
 
-      self.template = Template(templateString: templateString)
-
-      self.commonVariables = ["file": templatePath.lastComponent]
+      self.commonVariables = ["file": templatePath.lastComponent,
+                              "modelName": modelPath.lastComponentWithoutExtension]
    }
 
    public func render(_ entity: Entity, from model: Model) throws -> String {
@@ -24,6 +26,15 @@ public final class Renderer {
       return try self.render(try model.variables())
    }
 
+//    private static func motoSwiftEnvironment(templatePath: Path? = nil) -> Stencil.Environment {
+//        let ext = Stencil.Extension()
+//
+//        var extensions = stencilSwiftEnvironment().extensions
+//        extensions.append(ext)
+//        let loader = templatePath.map({ FileSystemLoader(paths: [$0.parent()]) })
+//        return Environment(loader: loader, extensions: extensions, templateClass: StencilSwiftKit.StencilSwiftTemplate.self)
+//    }
+    
    private func render(_ variables: [String: Any]) throws -> String {
       let variables = variables + self.commonVariables
       let renderedTemplate = try self.template.render(variables)
