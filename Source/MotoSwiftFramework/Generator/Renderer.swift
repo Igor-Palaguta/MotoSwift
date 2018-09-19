@@ -25,15 +25,6 @@ public final class Renderer {
    public func render(_ model: Model) throws -> String {
       return try self.render(try model.variables())
    }
-
-//    private static func motoSwiftEnvironment(templatePath: Path? = nil) -> Stencil.Environment {
-//        let ext = Stencil.Extension()
-//
-//        var extensions = stencilSwiftEnvironment().extensions
-//        extensions.append(ext)
-//        let loader = templatePath.map({ FileSystemLoader(paths: [$0.parent()]) })
-//        return Environment(loader: loader, extensions: extensions, templateClass: StencilSwiftKit.StencilSwiftTemplate.self)
-//    }
     
    private func render(_ variables: [String: Any]) throws -> String {
       let variables = variables + self.commonVariables
