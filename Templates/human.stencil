@@ -1,5 +1,6 @@
 import Foundation
 
+// swiftlint:disable trailing_newline
 @objc({{ class }})
 public class {{ class }}: _{{ class }} {
 }

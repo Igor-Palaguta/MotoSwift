@@ -1,6 +1,6 @@
 import Foundation
-import SWXMLHash
 import PathKit
+import SWXMLHash
 
 public final class ModelParser {
 
@@ -12,15 +12,15 @@ public final class ModelParser {
 
       let content: String = try path.read()
       let xml = SWXMLHash.parse(content)
-      let entities: [Entity] = try xml["model"]["entity"].map { try Entity(xml: $0) }
+      let entities: [Entity] = try xml["model"]["entity"].all.map { try Entity(xml: $0) }
       return Model(entities)
    }
 
    private func currentModelVersion(at path: Path) throws -> Path {
       switch path.extension {
-      case .some("xcdatamodel"):
+      case "xcdatamodel"?:
          return path
-      case .some("xcdatamodeld"):
+      case "xcdatamodeld"?:
          let versionFilePath = path + ".xccurrentversion"
          guard versionFilePath.exists else {
             return path + "\(path.lastComponentWithoutExtension).xcdatamodel"
@@ -49,7 +49,7 @@ private struct AbsentPlistKey: Error, CustomStringConvertible {
 private struct InvalidModelType: Error, CustomStringConvertible {
    let path: Path
 
-   public var description: String {
+   var description: String {
       return "Invalid model type: '\(path)'"
    }
 }

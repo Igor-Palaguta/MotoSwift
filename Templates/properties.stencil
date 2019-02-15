@@ -1,24 +1,22 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to {{ file }} instead.
 
-import Foundation
 import CoreData
+import Foundation
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
+// swiftlint:disable trailing_newline
 extension {{ class }} {
-   public {% if parent.class %}override {% endif %}class var entityName: String {
-      return "{{ name }}"
-   }
-
-   @nonobjc public class func fetchRequest() -> NSFetchRequest<{{ class }}> {
+   @nonobjc
+   public class func fetchRequest() -> NSFetchRequest<{{ class }}> {
        return NSFetchRequest<{{ class }}>(entityName: self.entityName)
    }
 
    {% for attribute in attributes %}
    @NSManaged public var {{ attribute.name }}: {% if attribute.isScalar %}{{ attribute.scalarType }}{% else %}{{ attribute.objectType }}{% if attribute.isOptional %}?{% endif %}{% endif %}
    {% endfor %}
-
    {% for relationship in relationships %}
    {% if not relationship.toMany %}
    @NSManaged public var {{ relationship.name }}: {% if relationship.class %}{{ relationship.class }}{% else %}NSManagedObject{% endif %}{% if relationship.isOptional %}?{% endif %}

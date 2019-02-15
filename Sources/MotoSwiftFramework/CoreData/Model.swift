@@ -6,6 +6,6 @@ public struct Model {
 
    init(_ entities: [Entity]) {
       self.entities = entities
-      self.index = entities.reduce([:]) { $0 + [$1.name: $1] }
+      self.index = Dictionary(uniqueKeysWithValues: entities.map { ($0.name, $0) })
    }
 }

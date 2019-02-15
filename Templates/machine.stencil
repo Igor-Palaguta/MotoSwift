@@ -1,9 +1,10 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to {{ file }} instead.
 
-import Foundation
 import CoreData
+import Foundation
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 {% if attributes %}
@@ -50,7 +51,8 @@ public enum {{ class }}FetchedProperties: String {
 
 // swiftlint:disable type_name
 public class _{{ class }}: {% if parent.class %}{{ parent.class }}{% else %}NSManagedObject{% endif %} {
-   public {% if parent.class %}override {% endif %}class var entityName: String {
+   @objc
+   {% if parent.class %}override {% endif %}public class var entityName: String {
       return "{{ name }}"
    }
 

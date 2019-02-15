@@ -1,6 +1,9 @@
-import Foundation
 import CoreData
+import Foundation
 
 @objc({{ class }})
 public class {{ class }}: {% if parent.class %}{{ parent.class }}{% else %}NSManagedObject{% endif %} {
+   {% if parent.class %}override {% endif %}public class var entityName: String {
+      return "{{ name }}"
+   }
 }
