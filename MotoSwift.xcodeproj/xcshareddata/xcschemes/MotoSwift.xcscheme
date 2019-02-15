@@ -14,94 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_112"
-               BuildableName = "Spectre.framework"
-               BlueprintName = "Spectre"
-               ReferencedContainer = "container:MotoSwift.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_126"
-               BuildableName = "PathKit.framework"
-               BlueprintName = "PathKit"
-               ReferencedContainer = "container:MotoSwift.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_135"
-               BuildableName = "Stencil.framework"
-               BlueprintName = "Stencil"
-               ReferencedContainer = "container:MotoSwift.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_164"
-               BuildableName = "Commander.framework"
-               BlueprintName = "Commander"
-               ReferencedContainer = "container:MotoSwift.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_181"
-               BuildableName = "SWXMLHash.framework"
-               BlueprintName = "SWXMLHash"
-               ReferencedContainer = "container:MotoSwift.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_189"
-               BuildableName = "MotoSwiftFramework.framework"
-               BlueprintName = "MotoSwiftFramework"
-               ReferencedContainer = "container:MotoSwift.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_221"
+               BlueprintIdentifier = "motoswift::motoswift"
                BuildableName = "motoswift"
                BlueprintName = "motoswift"
-               ReferencedContainer = "container:MotoSwift.xcodeproj">
+               ReferencedContainer = "container:motoswift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -116,10 +32,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "OBJ_244"
+               BlueprintIdentifier = "motoswift::MotoSwiftFrameworkTests"
                BuildableName = "MotoSwiftFrameworkTests.xctest"
                BlueprintName = "MotoSwiftFrameworkTests"
-               ReferencedContainer = "container:MotoSwift.xcodeproj">
+               ReferencedContainer = "container:motoswift.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -136,15 +52,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "OBJ_112"
-            BuildableName = "Spectre.framework"
-            BlueprintName = "Spectre"
-            ReferencedContainer = "container:MotoSwift.xcodeproj">
+            BlueprintIdentifier = "motoswift::motoswift"
+            BuildableName = "motoswift"
+            BlueprintName = "motoswift"
+            ReferencedContainer = "container:motoswift.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

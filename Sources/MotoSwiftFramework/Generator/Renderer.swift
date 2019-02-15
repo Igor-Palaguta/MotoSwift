@@ -6,11 +6,14 @@ public final class Renderer {
    private let template: StencilSwiftTemplate
    private let commonVariables: [String: String]
 
-   public init(templatePath: Path) throws {
+   public init(templatePath: Path, customVariables: [String: String] = [:]) throws {
       self.template = StencilSwiftTemplate(templateString: try templatePath.read(),
                                            environment: stencilSwiftEnvironment())
 
-      self.commonVariables = ["file": templatePath.lastComponent]
+      var allVariables = customVariables
+      allVariables["file"] = templatePath.lastComponent
+
+      self.commonVariables = allVariables
    }
 
    public func render(_ entity: Entity, from model: Model) throws -> String {
