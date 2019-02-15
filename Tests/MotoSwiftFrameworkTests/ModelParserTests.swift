@@ -77,8 +77,8 @@ private func test(typeModel model: Model) throws {
    try expect(scalarTypesEntity.relationships).to.containsSameElements(with: [expectedRelationship])
 
    let expectedFetchedProperties: [FetchedProperty] =
-      [FetchedProperty(name: "gt_100", entityName: "ScalarTypes", predicateString: "int16 > 100", userInfo: [:]),
-       FetchedProperty(name: "eq_true", entityName: "ScalarTypes", predicateString: "boolean == YES", userInfo: [:])
+      [FetchedProperty(name: "gt100", entityName: "ScalarTypes", predicateString: "int16 > 100", userInfo: [:]),
+       FetchedProperty(name: "eqTrue", entityName: "ScalarTypes", predicateString: "boolean == YES", userInfo: [:])
    ]
 
    try expect(scalarTypesEntity.fetchedProperties).to.containsSameElements(with: expectedFetchedProperties)

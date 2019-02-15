@@ -1,9 +1,10 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to machine.stencil instead.
 
-import Foundation
 import CoreData
+import Foundation
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 public enum ScalarTypesClassAttributes: String {
@@ -20,23 +21,23 @@ public enum ScalarTypesClassRelationships: String {
 }
 
 public enum ScalarTypesClassFetchedProperties: String {
-   case eq_true
-   case gt_100
+   case eqTrue
+   case gt100
 
    public var predicateString: String {
       switch self {
-      case .eq_true:
+      case .eqTrue:
          return "boolean == YES"
-      case .gt_100:
+      case .gt100:
          return "int16 > 100"
       }
    }
 
    public var entityName: String {
       switch self {
-      case .eq_true:
+      case .eqTrue:
          return "ScalarTypes"
-      case .gt_100:
+      case .gt100:
          return "ScalarTypes"
       }
    }
@@ -44,6 +45,7 @@ public enum ScalarTypesClassFetchedProperties: String {
 
 // swiftlint:disable type_name
 public class _ScalarTypesClass: NSManagedObject {
+   @objc
    public class var entityName: String {
       return "ScalarTypes"
    }

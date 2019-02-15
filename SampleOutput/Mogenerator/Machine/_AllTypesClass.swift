@@ -1,9 +1,10 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to machine.stencil instead.
 
-import Foundation
 import CoreData
+import Foundation
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 public enum AllTypesClassAttributes: String {
@@ -13,11 +14,15 @@ public enum AllTypesClassAttributes: String {
    case transformable
 }
 
+public enum AllTypesClassRelationships: String {
+   case properties
+}
 
 
 // swiftlint:disable type_name
 public class _AllTypesClass: NumericTypesClass {
-   public override class var entityName: String {
+   @objc
+   override public class var entityName: String {
       return "AllTypes"
    }
 
@@ -26,4 +31,5 @@ public class _AllTypesClass: NumericTypesClass {
    @NSManaged public var string: String?
    @NSManaged public var transformable: NSObject?
 
+   @NSManaged public var properties: NSSet
 }

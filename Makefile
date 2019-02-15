@@ -30,9 +30,16 @@ lint:
 build:
 	swift build --configuration $(BUILD_CONFIGURATION)
 
+samples: build
+	"$(BUILD_PATH)" machine --template ./Templates/mogenerator/human.stencil --output ./SampleOutput/Mogenerator/Human --file-mask "{{class}}.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
+	"$(BUILD_PATH)" machine --template ./Templates/mogenerator/machine.stencil --output ./SampleOutput/Mogenerator/Machine --file-mask "_{{class}}.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
+	"$(BUILD_PATH)" machine --template ./Templates/xcode/class.stencil --output ./SampleOutput/Xcode --file-mask "{{class}}+CoreDataClass.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
+	"$(BUILD_PATH)" machine --template ./Templates/xcode/properties.stencil --output ./SampleOutput/Xcode --file-mask "{{class}}+CoreDataProperties.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
+	"$(BUILD_PATH)" model --template ./Templates/model.stencil --output ./SampleOutput/Model/Model.swift $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
+
 .prepare_test_data: build
-	"$(BUILD_PATH)" machine --template ./Templates/class.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --file-mask "{{class}}+CoreDataClass.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
-	"$(BUILD_PATH)" machine --template ./Templates/properties.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --file-mask "{{class}}+CoreDataProperties.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
+	"$(BUILD_PATH)" machine --template ./Templates/xcode/class.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --file-mask "{{class}}+CoreDataClass.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
+	"$(BUILD_PATH)" machine --template ./Templates/xcode/properties.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated --file-mask "{{class}}+CoreDataProperties.swift" $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
 	"$(BUILD_PATH)" model --template ./Templates/model.stencil --output ./Tests/MotoSwiftFrameworkTests/Generated/Model.swift $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld
 	cd "$(MOMC_PATH)"; xcrun momc $(TEST_RESOURCES_PATH)/TypesModel.xcdatamodeld $(TEST_RESOURCES_PATH)/TypesModel.momd
 
