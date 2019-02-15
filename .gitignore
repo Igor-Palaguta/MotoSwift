@@ -5,7 +5,6 @@
 ## Build generated
 build/
 DerivedData/
-motoswift/
 
 ## Various settings
 *.pbxuser
@@ -31,4 +30,4 @@ xcuserdata/
 *.pkg
 
 .build/
-motoswift.xcodeproj/
+*.xcodeproj/
