@@ -7,6 +7,6 @@ extension XMLIndexer {
          try ($0.value(ofAttribute: "key"), $0.value(ofAttribute: "value"))
       }
 
-      return Dictionary(keysAndValues) { first, _ in first }
+      return Dictionary(keysAndValues) { $1 }
    }
 }
