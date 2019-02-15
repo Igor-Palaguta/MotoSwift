@@ -1,6 +1,6 @@
+import CoreData
 import Foundation
 import Spectre
-import CoreData
 
 func testGeneratedCode() {
    describe("TypesModel") {

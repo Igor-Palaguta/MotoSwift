@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="17G3025" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AllTypes" representedClassName="AllTypesClass" parentEntity="NumericTypes" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -36,10 +36,10 @@
         <attribute name="int32" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="int64" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="numerics" maxCount="1" deletionRule="Nullify" destinationEntity="NumericTypes" inverseName="scalars" inverseEntity="NumericTypes" syncable="YES"/>
-        <fetchedProperty name="eq_true" optional="YES" syncable="YES">
+        <fetchedProperty name="eqTrue" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="ScalarTypes" predicateString="boolean == YES"/>
         </fetchedProperty>
-        <fetchedProperty name="gt_100" optional="YES" syncable="YES">
+        <fetchedProperty name="gt100" optional="YES" syncable="YES">
             <fetchRequest name="fetchedPropertyFetchRequest" entity="ScalarTypes" predicateString="int16 &gt; 100"/>
         </fetchedProperty>
         <userInfo>
@@ -49,7 +49,7 @@
     <elements>
         <element name="AllTypes" positionX="-63" positionY="-18" width="128" height="120"/>
         <element name="NumericTypes" positionX="-54" positionY="72" width="128" height="165"/>
-        <element name="ScalarTypes" positionX="-9" positionY="117" width="128" height="194"/>
         <element name="Property" positionX="-36" positionY="126" width="128" height="90"/>
+        <element name="ScalarTypes" positionX="-9" positionY="117" width="128" height="194"/>
     </elements>
 </model>

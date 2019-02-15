@@ -1,7 +1,7 @@
 import Foundation
-import Spectre
-import PathKit
 @testable import MotoSwiftFramework
+import PathKit
+import Spectre
 
 func testModelParser() {
    describe("ModelParser") {
@@ -69,7 +69,6 @@ private func test(typeModel model: Model) throws {
       .filter { $0.key != .decimal }
       .map { Attribute(name: $1, type: $0, isOptional: false, isScalar: true, userInfo: [:]) }
 
-
    try expect(scalarTypesEntity.attributes).to.containsSameElements(with: scalarAttributes)
 
    let expectedRelationship = Relationship(name: "numerics", entityName: "NumericTypes", isOptional: false, toMany: false, isOrdered: false, userInfo: [:])
@@ -77,8 +76,8 @@ private func test(typeModel model: Model) throws {
    try expect(scalarTypesEntity.relationships).to.containsSameElements(with: [expectedRelationship])
 
    let expectedFetchedProperties: [FetchedProperty] =
-      [FetchedProperty(name: "gt_100", entityName: "ScalarTypes", predicateString: "int16 > 100", userInfo: [:]),
-       FetchedProperty(name: "eq_true", entityName: "ScalarTypes", predicateString: "boolean == YES", userInfo: [:])
+      [FetchedProperty(name: "gt100", entityName: "ScalarTypes", predicateString: "int16 > 100", userInfo: [:]),
+       FetchedProperty(name: "eqTrue", entityName: "ScalarTypes", predicateString: "boolean == YES", userInfo: [:])
    ]
 
    try expect(scalarTypesEntity.fetchedProperties).to.containsSameElements(with: expectedFetchedProperties)

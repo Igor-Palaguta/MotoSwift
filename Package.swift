@@ -1,21 +1,24 @@
+// swift-tools-version:4.2
 import PackageDescription
 
 let package = Package(
    name: "MotoSwift",
-   targets: [
-      Target(name: "MotoSwiftFramework"),
-      Target(name: "motoswift",
-             dependencies: [
-               .Target(name: "MotoSwiftFramework"),
-               ]),
-      ],
+   products: [
+      .executable(name: "motoswift", targets: ["motoswift"]),
+      .library(name: "MotoSwiftFramework", targets: ["MotoSwiftFramework"])
+   ],
    dependencies: [
-      .Package(url: "https://github.com/kylef/Stencil.git", majorVersion: 0, minor: 9),
-      .Package(url: "https://github.com/kylef/Commander.git", majorVersion: 0, minor: 6),
-      .Package(url: "https://github.com/drmohundro/SWXMLHash.git", majorVersion: 3, minor: 0),
-      // https://github.com/apple/swift-package-manager/pull/597
-      //.Package(url: "https://github.com/kylef/Spectre", majorVersion: 0, minor: 7),
-      ]
+      .package(url: "https://github.com/SwiftGen/StencilSwiftKit.git", from: "2.7.0"),
+      .package(url: "https://github.com/kylef/Commander.git", from: "0.8.0"),
+      .package(url: "https://github.com/drmohundro/SWXMLHash.git", from: "4.7.0"),
+      .package(url: "https://github.com/kylef/Spectre", from: "0.8.0")
+   ],
+   targets: [
+      .target(name: "MotoSwiftFramework", dependencies: ["StencilSwiftKit", "SWXMLHash"]),
+      .target(name: "motoswift", dependencies: ["MotoSwiftFramework", "Commander"]),
+      .testTarget(
+           name: "MotoSwiftFrameworkTests",
+           dependencies: ["MotoSwiftFramework", "Spectre"]
+      )
+   ]
 )
-
-package.exclude = ["Tests/MotoSwiftFrameworkTests/Resources"]

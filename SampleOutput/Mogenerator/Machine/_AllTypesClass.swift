@@ -1,11 +1,13 @@
-// DO NOT EDIT. This file is machine-generated for TypesModel and constantly overwritten.
+// DO NOT EDIT. This file is machine-generated and constantly overwritten.
 // Make changes to machine.stencil instead.
 
-import Foundation
 import CoreData
+import Foundation
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
+// swiftlint:disable vertical_whitespace
 public enum AllTypesClassAttributes: String {
    case data
    case date
@@ -20,7 +22,7 @@ public enum AllTypesClassRelationships: String {
 
 // swiftlint:disable type_name
 public class _AllTypesClass: NumericTypesClass {
-   public override class var entityName: String {
+   @objc override public class var entityName: String {
       return "AllTypes"
    }
 
@@ -30,19 +32,4 @@ public class _AllTypesClass: NumericTypesClass {
    @NSManaged public var transformable: NSObject?
 
    @NSManaged public var properties: NSSet
-}
-
-extension AllTypesClass {
-
-   @objc(addPropertiesObject:)
-   @NSManaged public func addToProperties(_ value: PropertyClass)
-
-   @objc(removePropertiesObject:)
-   @NSManaged public func removeFromProperties(_ value: PropertyClass)
-
-   @objc(addProperties:)
-   @NSManaged public func addToProperties(_ values: NSSet)
-
-   @objc(removeProperties:)
-   @NSManaged public func removeFromProperties(_ values: NSSet)
 }
