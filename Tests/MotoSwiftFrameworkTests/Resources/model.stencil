@@ -1,4 +1,4 @@
-// DO NOT EDIT. This file is machine-generated and constantly overwritten.
+// DO NOT EDIT. This file is machine-generated for {{ modelName }} and constantly overwritten.
 // Make changes to {{ file }} instead.
 
 import Foundation

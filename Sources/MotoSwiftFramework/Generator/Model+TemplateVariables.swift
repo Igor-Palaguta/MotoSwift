@@ -2,23 +2,25 @@ import Foundation
 
 extension Model {
    func variables(for entity: Entity) throws -> [String: Any] {
-      return try entity.variables(with: .swift, index: index)
+      var variables = try entity.variables(with: .swift, index: index)
+      variables["modelName"] = name
+      return variables
    }
 
    func variables() throws -> [String: Any] {
-      let entitiesContexts = try entities.map {
+      let entitiesContext = try entities.map {
          try $0.variables(with: .swift, index: index)
       }
 
-      return ["entities": entitiesContexts]
+      return ["modelName": name, "entities": entitiesContext]
    }
 }
 
-protocol Serializable {
+private protocol VariablesProviding {
    func variables(with language: Language, index: [String: Entity]) throws -> [String: Any]
 }
 
-extension Entity: Serializable {
+extension Entity: VariablesProviding {
    func variables(with language: Language, index: [String: Entity]) throws -> [String: Any] {
       var context = try variables(with: language)
       if let parentEntityName = parentEntityName,
@@ -38,27 +40,31 @@ extension Entity: Serializable {
    }
 }
 
-extension Attribute: Serializable {
+extension Attribute: VariablesProviding {
    func variables(with language: Language, index: [String: Entity]) throws -> [String: Any] {
-      var context: [String: Any] = ["name": name,
-                                    "type": language.scalarType(for: type) ?? language.objectType(for: type),
-                                    "objectType": language.objectType(for: type),
-                                    "isOptional": isOptional,
-                                    "isScalar": isScalar,
-                                    "isInteger": type.isInteger,
-                                    "isFloat": type.isFloat]
+      var context: [String: Any] = [
+         "name": name,
+         "type": language.scalarType(for: type) ?? language.objectType(for: type),
+         "objectType": language.objectType(for: type),
+         "isOptional": isOptional,
+         "isScalar": isScalar,
+         "isInteger": type.isInteger,
+         "isFloat": type.isFloat
+      ]
       context["scalarType"] = language.scalarType(for: type)
       return context.merging(userInfo) { $1 }
    }
 }
 
-extension Relationship: Serializable {
+extension Relationship: VariablesProviding {
    func variables(with language: Language, index: [String: Entity]) throws -> [String: Any] {
-      var context: [String: Any] = ["name": name,
-                                    "entityName": entityName,
-                                    "isOptional": isOptional,
-                                    "toMany": toMany,
-                                    "isOrdered": isOrdered]
+      var context: [String: Any] = [
+         "name": name,
+         "entityName": entityName,
+         "isOptional": isOptional,
+         "toMany": toMany,
+         "isOrdered": isOrdered
+      ]
       if let entity = index[entityName] {
          context["class"] = entity.className
          context["entity"] = try entity.variables(with: language)
@@ -67,11 +73,13 @@ extension Relationship: Serializable {
    }
 }
 
-extension FetchedProperty: Serializable {
+extension FetchedProperty: VariablesProviding {
    func variables(with language: Language, index: [String: Entity]) throws -> [String: Any] {
-      var context: [String: Any] = ["name": name,
-                                    "entityName": entityName,
-                                    "predicateString": predicateString]
+      var context: [String: Any] = [
+         "name": name,
+         "entityName": entityName,
+         "predicateString": predicateString
+      ]
       if let entity = index[entityName] {
          context["class"] = entity.className
          context["entity"] = try entity.variables(with: language)

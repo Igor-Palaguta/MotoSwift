@@ -7,13 +7,13 @@ public final class ModelParser {
    public init() {
    }
 
-   public func parseModel(at path: Path) throws -> Model {
-      let path = try currentModelVersion(at: path) + "contents"
+   public func parseModel(at modelPath: Path) throws -> Model {
+      let contentPath = try currentModelVersion(at: modelPath) + "contents"
 
-      let content: String = try path.read()
+      let content: String = try contentPath.read()
       let xml = SWXMLHash.parse(content)
-      let entities: [Entity] = try xml["model"]["entity"].all.map { try Entity(xml: $0) }
-      return Model(entities)
+      let entities = try xml["model"]["entity"].all.map { try Entity(xml: $0) }
+      return Model(name: modelPath.lastComponentWithoutExtension, entities: entities)
    }
 
    private func currentModelVersion(at path: Path) throws -> Path {

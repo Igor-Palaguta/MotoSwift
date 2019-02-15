@@ -6,25 +6,22 @@ public final class Renderer {
    private let template: StencilSwiftTemplate
    private let commonVariables: [String: String]
 
-   public init(templatePath: Path, customVariables: [String: String] = [:]) throws {
+   public init(templatePath: Path) throws {
       self.template = StencilSwiftTemplate(templateString: try templatePath.read(),
                                            environment: stencilSwiftEnvironment())
 
-      var allVariables = customVariables
-      allVariables["file"] = templatePath.lastComponent
-
-      self.commonVariables = allVariables
+      self.commonVariables = ["file": templatePath.lastComponent]
    }
 
    public func render(_ entity: Entity, from model: Model) throws -> String {
-      return try render(try model.variables(for: entity))
+      return try render(variables: try model.variables(for: entity))
    }
 
    public func render(_ model: Model) throws -> String {
-      return try render(try model.variables())
+      return try render(variables: try model.variables())
    }
 
-   private func render(_ variables: [String: Any]) throws -> String {
+   private func render(variables: [String: Any]) throws -> String {
       let variables = variables.merging(commonVariables) { $1 }
       let renderedTemplate = try template.render(variables)
       return renderedTemplate
