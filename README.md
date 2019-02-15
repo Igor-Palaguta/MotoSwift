@@ -63,13 +63,13 @@ If you need all components in one folder run `make bundle`. Now you can copy who
 
 2. *Mogenerator* style
 
-  `motoswift human --template ./Templates/mogenerator/human.stencil --output ./SampleOutput/Human --file-mask "{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  `motoswift human --template ./Templates/mogenerator/human.stencil --output ./SampleOutput/Mogenerator/Human --file-mask "{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
 
-  `motoswift machine --template ./Templates/mogenerator/machine.stencil --output ./SampleOutput/Machine --file-mask "_{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
+  [SampleOutput/Mogenerator/Human](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Mogenerator/Human)
 
-  [SampleOutput/Human](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Mogenerator/Human)
+  `motoswift machine --template ./Templates/mogenerator/machine.stencil --output ./SampleOutput/Mogenerator/Machine --file-mask "_{{class}}.swift" ./Tests/MotoSwiftFrameworkTests/Resources/TypesModel.xcdatamodeld`
 
-  [SampleOutput/Machine](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Mogenerator/Machine)
+  [SampleOutput/Mogenerator/Machine](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Mogenerator/Machine)
 
 3. All entity and field names
 
