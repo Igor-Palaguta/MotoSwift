@@ -7,6 +7,7 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 // swiftlint:disable nesting
+// swiftlint:disable trailing_newline
 public struct CoreDataEntity {
    public struct AllTypes {
       public static let name = "AllTypes"

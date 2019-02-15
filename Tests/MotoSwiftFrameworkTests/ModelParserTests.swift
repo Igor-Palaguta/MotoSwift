@@ -1,7 +1,7 @@
 import Foundation
-import Spectre
-import PathKit
 @testable import MotoSwiftFramework
+import PathKit
+import Spectre
 
 func testModelParser() {
    describe("ModelParser") {
@@ -68,7 +68,6 @@ private func test(typeModel model: Model) throws {
    let scalarAttributes: [Attribute] = numericTypesMapping
       .filter { $0.key != .decimal }
       .map { Attribute(name: $1, type: $0, isOptional: false, isScalar: true, userInfo: [:]) }
-
 
    try expect(scalarTypesEntity.attributes).to.containsSameElements(with: scalarAttributes)
 

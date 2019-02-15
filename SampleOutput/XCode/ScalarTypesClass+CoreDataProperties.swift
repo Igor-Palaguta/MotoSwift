@@ -7,6 +7,7 @@ import Foundation
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
+// swiftlint:disable trailing_newline
 extension ScalarTypesClass {
    @nonobjc
    public class func fetchRequest() -> NSFetchRequest<ScalarTypesClass> {

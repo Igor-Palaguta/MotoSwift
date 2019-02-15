@@ -7,6 +7,7 @@ import Foundation
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
+// swiftlint:disable vertical_whitespace
 public enum PropertyClassAttributes: String {
    case name
    case value
@@ -19,8 +20,7 @@ public enum PropertyClassRelationships: String {
 
 // swiftlint:disable type_name
 public class _PropertyClass: NSManagedObject {
-   @objc
-   public class var entityName: String {
+   @objc public class var entityName: String {
       return "Property"
    }
 

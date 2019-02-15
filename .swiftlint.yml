@@ -52,7 +52,6 @@ opt_in_rules:
   - explicit_init
   - fallthrough
   - fatal_error_message
-#  - file_header
   - first_where
   - force_unwrapping
   - function_default_parameter_at_end
@@ -94,9 +93,6 @@ opt_in_rules:
 excluded:
   - .git
   - .build
-  - Package.swift
-  - SampleOutput
-  - Tests
 
 custom_rules:
   tabs:

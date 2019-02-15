@@ -7,6 +7,7 @@ import Foundation
 // swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
+// swiftlint:disable vertical_whitespace
 {% if attributes %}
 public enum {{ class }}Attributes: String {
    {% for attribute in attributes %}
@@ -51,8 +52,7 @@ public enum {{ class }}FetchedProperties: String {
 
 // swiftlint:disable type_name
 public class _{{ class }}: {% if parent.class %}{{ parent.class }}{% else %}NSManagedObject{% endif %} {
-   @objc
-   {% if parent.class %}override {% endif %}public class var entityName: String {
+   @objc {% if parent.class %}override {% endif %}public class var entityName: String {
       return "{{ name }}"
    }
 

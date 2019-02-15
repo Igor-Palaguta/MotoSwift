@@ -1,6 +1,6 @@
 import Foundation
-import Spectre
 @testable import MotoSwiftFramework
+import Spectre
 
 func testRenderer() {
    describe("Renderer") {
