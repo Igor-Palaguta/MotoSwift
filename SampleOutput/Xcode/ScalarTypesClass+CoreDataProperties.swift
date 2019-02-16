@@ -9,6 +9,10 @@ import Foundation
 // swiftlint:disable type_body_length
 // swiftlint:disable trailing_newline
 extension ScalarTypesClass {
+   @objc public class var entityName: String {
+      return "ScalarTypes"
+   }
+
    @nonobjc
    public class func fetchRequest() -> NSFetchRequest<ScalarTypesClass> {
        return NSFetchRequest<ScalarTypesClass>(entityName: self.entityName)

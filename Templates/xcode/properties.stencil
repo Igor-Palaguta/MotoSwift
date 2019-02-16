@@ -9,6 +9,10 @@ import Foundation
 // swiftlint:disable type_body_length
 // swiftlint:disable trailing_newline
 extension {{ class }} {
+   @objc {% if parent.class %}override {% endif %}public class var entityName: String {
+      return "{{ name }}"
+   }
+
    @nonobjc
    public class func fetchRequest() -> NSFetchRequest<{{ class }}> {
        return NSFetchRequest<{{ class }}>(entityName: self.entityName)

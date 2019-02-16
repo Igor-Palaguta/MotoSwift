@@ -51,7 +51,7 @@ If you need all components in one folder run `make bundle`. Now you can copy who
     * --template - Path to model template.
 
 
-###Examples
+### Examples
 
 1. *Xcode* style
 

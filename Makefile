@@ -59,6 +59,7 @@ test: .prepare_test_data
 
 .bundle_libraries:
 	mkdir -p "$(BUNDLE_LIB_PATH)"
+	swift package generate-xcodeproj
 	xcrun swift-stdlib-tool --copy --verbose --Xcodesign --timestamp=none \
 		--scan-executable "$(BUILD_PATH)" \
 		--platform macosx --destination "$(BUNDLE_LIB_PATH)" \
