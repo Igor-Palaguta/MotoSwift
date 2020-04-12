@@ -1,3 +1,5 @@
+#if TEST_MODEL
+
 import CoreData
 import Foundation
 import Spectre
@@ -129,3 +131,5 @@ extension NSSet {
       return !elements.contains { !self.contains($0) }
    }
 }
+
+#endif
