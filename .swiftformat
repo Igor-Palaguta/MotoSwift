@@ -1,5 +1,5 @@
 # file options
---exclude Tests/MotoSwiftFrameworkTests/Generated,.build,.git,.swiftpm
+--exclude Tests/MotoSwiftFrameworkTests/Generated,SampleOutput,.build,.git,.swiftpm
 
 # format options
 --indent 4

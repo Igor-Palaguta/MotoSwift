@@ -10,23 +10,23 @@ import Foundation
 // swiftlint:disable vertical_whitespace
 // swiftlint:disable implicit_return
 public enum PropertyClassAttributes: String {
-   case name
-   case value
+    case name
+    case value
 }
 
 public enum PropertyClassRelationships: String {
-   case types
+    case types
 }
 
 
 // swiftlint:disable type_name
 public class _PropertyClass: NSManagedObject {
-   @objc public class var entityName: String {
-      return "Property"
-   }
+    @objc public class var entityName: String {
+        return "Property"
+    }
 
-   @NSManaged public var name: String
-   @NSManaged public var value: String
+    @NSManaged public var name: String
+    @NSManaged public var value: String
 
-   @NSManaged public var types: AllTypesClass?
+    @NSManaged public var types: AllTypesClass?
 }
