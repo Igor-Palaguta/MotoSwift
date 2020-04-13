@@ -1,34 +1,37 @@
 import Foundation
 @testable import MotoSwiftFramework
-import Spectre
+import Nimble
+import XCTest
 
-func testRenderer() {
-    describe("Renderer") {
+final class RendererTests: XCTestCase {
+    private var model: Model!
+
+    override func setUpWithError() throws {
         let modelPath = path(forResource: "TypesModel", ofType: "xcdatamodeld")
-        let model = try! ModelParser().parseModel(at: modelPath)
+        model = try ModelParser().parseModel(at: modelPath)
+    }
 
-        $0.it("renders entity") {
-            let templatePath = path(forResource: "machine", ofType: "stencil")
-            let renderer = try Renderer(templatePath: templatePath)
+    func testEntities() throws {
+        let templatePath = path(forResource: "machine", ofType: "stencil")
+        let renderer = try Renderer(templatePath: templatePath)
 
-            for entity in model.entities {
-                guard let className = entity.className else {
-                    return
-                }
-                let code = try renderer.render(entity, from: model)
-                let expectedEntityPath = path(forResource: "_\(className)", ofType: "swift.out")
-                let expectedCode: String = try expectedEntityPath.read()
-                try expect(code) == expectedCode
-            }
-        }
-        $0.it("renders model") {
-            let templatePath = path(forResource: "model", ofType: "stencil")
-            let renderer = try Renderer(templatePath: templatePath)
-
-            let code = try renderer.render(model)
-            let expectedEntityPath = path(forResource: "Model", ofType: "swift.out")
+        for entityName in ["AllTypes", "NumericTypes", "Property", "ScalarTypes"] {
+            let entity = model.entityByName[entityName]!
+            let className = entity.className!
+            let code = try renderer.render(entity, from: model)
+            let expectedEntityPath = path(forResource: "_\(className)", ofType: "swift.out")
             let expectedCode: String = try expectedEntityPath.read()
-            try expect(code) == expectedCode
+            expect(code) == expectedCode
         }
+    }
+
+    func testModel() throws {
+        let templatePath = path(forResource: "model", ofType: "stencil")
+        let renderer = try Renderer(templatePath: templatePath)
+
+        let code = try renderer.render(model)
+        let expectedEntityPath = path(forResource: "Model", ofType: "swift.out")
+        let expectedCode: String = try expectedEntityPath.read()
+        expect(code) == expectedCode
     }
 }

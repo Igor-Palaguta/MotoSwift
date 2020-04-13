@@ -2,14 +2,14 @@ import Foundation
 
 extension Model {
     func variables(for entity: Entity) throws -> [String: Any] {
-        var variables = try entity.variables(with: .swift, index: index)
+        var variables = try entity.variables(with: .swift, index: entityByName)
         variables["modelName"] = name
         return variables
     }
 
     func variables() throws -> [String: Any] {
         let entitiesContext = try entities.map {
-            try $0.variables(with: .swift, index: index)
+            try $0.variables(with: .swift, index: entityByName)
         }
 
         return ["modelName": name, "entities": entitiesContext]

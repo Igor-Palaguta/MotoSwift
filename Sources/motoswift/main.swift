@@ -8,7 +8,7 @@ struct MotoSwift: ParsableCommand {
             VersionCommand.self,
             ModelCommand.self,
             EntityCommand<HumanFile>.self,
-            EntityCommand<MachineFile>.self,
+            EntityCommand<MachineFile>.self
         ]
     )
 }

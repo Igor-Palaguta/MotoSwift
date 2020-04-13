@@ -77,5 +77,11 @@ If you need all components in one folder run `make bundle`. Now you can copy who
 
   [SampleOutput/Model/Model.swift](https://github.com/Igor-Palaguta/MotoSwift/tree/master/SampleOutput/Model/Model.swift)
 
+## Tests
+`make test`
+
+## Releasing
+`make .package`
+
 ## Additional documentation
 MotoSwift uses [Stencil](https://github.com/kylef/Stencil) as template language
