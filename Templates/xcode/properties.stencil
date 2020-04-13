@@ -10,42 +10,42 @@ import Foundation
 // swiftlint:disable trailing_newline
 // swiftlint:disable implicit_return
 extension {{ class }} {
-   @objc {% if parent.class %}override {% endif %}public class var entityName: String {
-      return "{{ name }}"
-   }
+    @objc {% if parent.class %}override {% endif %}public class var entityName: String {
+        return "{{ name }}"
+    }
 
-   @nonobjc
-   public class func fetchRequest() -> NSFetchRequest<{{ class }}> {
-       return NSFetchRequest<{{ class }}>(entityName: entityName)
-   }
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<{{ class }}> {
+        return NSFetchRequest<{{ class }}>(entityName: entityName)
+    }
 
-   {% for attribute in attributes %}
-   @NSManaged public var {{ attribute.name }}: {% if attribute.isScalar %}{{ attribute.scalarType }}{% else %}{{ attribute.objectType }}{% if attribute.isOptional %}?{% endif %}{% endif %}
-   {% endfor %}
-   {% for relationship in relationships %}
-   {% if not relationship.toMany %}
-   @NSManaged public var {{ relationship.name }}: {% if relationship.class %}{{ relationship.class }}{% else %}NSManagedObject{% endif %}{% if relationship.isOptional %}?{% endif %}
-   {% else %}
-   @NSManaged public var {{ relationship.name }}: {% if relationship.isOrdered %}NSOrderedSet{% else %}NSSet{% endif %}
-   {% endif %}
-   {% endfor %}
+    {% for attribute in attributes %}
+    @NSManaged public var {{ attribute.name }}: {% if attribute.isScalar %}{{ attribute.scalarType }}{% else %}{{ attribute.objectType }}{% if attribute.isOptional %}?{% endif %}{% endif %}
+    {% endfor %}
+    {% for relationship in relationships %}
+    {% if not relationship.toMany %}
+    @NSManaged public var {{ relationship.name }}: {% if relationship.class %}{{ relationship.class }}{% else %}NSManagedObject{% endif %}{% if relationship.isOptional %}?{% endif %}
+    {% else %}
+    @NSManaged public var {{ relationship.name }}: {% if relationship.isOrdered %}NSOrderedSet{% else %}NSSet{% endif %}
+    {% endif %}
+    {% endfor %}
 }
 
 {% for relationship in relationships %}
 {% if relationship.toMany %}
 extension {{ class }} {
 
-   @objc(add{{ relationship.name | capitalize }}Object:)
-   @NSManaged public func addTo{{ relationship.name | capitalize }}(_ value: {{ relationship.class }})
+    @objc(add{{ relationship.name | capitalize }}Object:)
+    @NSManaged public func addTo{{ relationship.name | capitalize }}(_ value: {{ relationship.class }})
 
-   @objc(remove{{ relationship.name | capitalize }}Object:)
-   @NSManaged public func removeFrom{{ relationship.name | capitalize }}(_ value: {{ relationship.class }})
+    @objc(remove{{ relationship.name | capitalize }}Object:)
+    @NSManaged public func removeFrom{{ relationship.name | capitalize }}(_ value: {{ relationship.class }})
 
-   @objc(add{{ relationship.name | capitalize }}:)
-   @NSManaged public func addTo{{ relationship.name | capitalize }}(_ values: NSSet)
+    @objc(add{{ relationship.name | capitalize }}:)
+    @NSManaged public func addTo{{ relationship.name | capitalize }}(_ values: NSSet)
 
-   @objc(remove{{ relationship.name | capitalize }}:)
-   @NSManaged public func removeFrom{{ relationship.name | capitalize }}(_ values: NSSet)
+    @objc(remove{{ relationship.name | capitalize }}:)
+    @NSManaged public func removeFrom{{ relationship.name | capitalize }}(_ values: NSSet)
 }
 {% endif %}
 {% endfor %}
