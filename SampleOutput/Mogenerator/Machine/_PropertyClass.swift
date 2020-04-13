@@ -8,6 +8,7 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 // swiftlint:disable vertical_whitespace
+// swiftlint:disable implicit_return
 public enum PropertyClassAttributes: String {
    case name
    case value

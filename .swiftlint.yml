@@ -34,6 +34,10 @@ private_outlet:
 trailing_closure:
   only_single_muted_parameter: true
 
+implicit_return:
+  included:
+    - closure
+
 opt_in_rules:
   - anyobject_protocol
   - array_init

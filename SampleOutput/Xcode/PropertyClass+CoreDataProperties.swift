@@ -8,6 +8,7 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 // swiftlint:disable trailing_newline
+// swiftlint:disable implicit_return
 extension PropertyClass {
    @objc public class var entityName: String {
       return "Property"
@@ -15,7 +16,7 @@ extension PropertyClass {
 
    @nonobjc
    public class func fetchRequest() -> NSFetchRequest<PropertyClass> {
-       return NSFetchRequest<PropertyClass>(entityName: self.entityName)
+       return NSFetchRequest<PropertyClass>(entityName: entityName)
    }
 
    @NSManaged public var name: String

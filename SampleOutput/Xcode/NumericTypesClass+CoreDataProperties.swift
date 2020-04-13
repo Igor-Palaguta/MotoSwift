@@ -8,6 +8,7 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 // swiftlint:disable trailing_newline
+// swiftlint:disable implicit_return
 extension NumericTypesClass {
    @objc public class var entityName: String {
       return "NumericTypes"
@@ -15,7 +16,7 @@ extension NumericTypesClass {
 
    @nonobjc
    public class func fetchRequest() -> NSFetchRequest<NumericTypesClass> {
-       return NSFetchRequest<NumericTypesClass>(entityName: self.entityName)
+       return NSFetchRequest<NumericTypesClass>(entityName: entityName)
    }
 
    @NSManaged public var boolean: NSNumber?

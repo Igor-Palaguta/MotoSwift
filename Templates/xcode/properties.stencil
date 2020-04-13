@@ -8,6 +8,7 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 // swiftlint:disable trailing_newline
+// swiftlint:disable implicit_return
 extension {{ class }} {
    @objc {% if parent.class %}override {% endif %}public class var entityName: String {
       return "{{ name }}"
@@ -15,7 +16,7 @@ extension {{ class }} {
 
    @nonobjc
    public class func fetchRequest() -> NSFetchRequest<{{ class }}> {
-       return NSFetchRequest<{{ class }}>(entityName: self.entityName)
+       return NSFetchRequest<{{ class }}>(entityName: entityName)
    }
 
    {% for attribute in attributes %}

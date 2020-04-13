@@ -8,6 +8,7 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 // swiftlint:disable trailing_newline
+// swiftlint:disable implicit_return
 extension AllTypesClass {
    @objc override public class var entityName: String {
       return "AllTypes"
@@ -15,7 +16,7 @@ extension AllTypesClass {
 
    @nonobjc
    public class func fetchRequest() -> NSFetchRequest<AllTypesClass> {
-       return NSFetchRequest<AllTypesClass>(entityName: self.entityName)
+       return NSFetchRequest<AllTypesClass>(entityName: entityName)
    }
 
    @NSManaged public var data: NSData?
