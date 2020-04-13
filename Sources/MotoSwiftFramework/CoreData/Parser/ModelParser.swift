@@ -27,16 +27,16 @@ public final class ModelParser {
             let versionKey = "_XCCurrentVersionName"
             guard let plist = NSDictionary(contentsOfFile: String(describing: versionFilePath)),
                 let versionFile = plist[versionKey] as? String else {
-                throw AbsentPlistKey(key: versionKey, path: versionFilePath)
+                throw AbsentPlistKeyError(key: versionKey, path: versionFilePath)
             }
             return path + versionFile
         default:
-            throw InvalidModelType(path: path)
+            throw InvalidModelTypeError(path: path)
         }
     }
 }
 
-private struct AbsentPlistKey: Error, CustomStringConvertible {
+private struct AbsentPlistKeyError: Error, CustomStringConvertible {
     let key: String
     let path: Path
 
@@ -45,7 +45,7 @@ private struct AbsentPlistKey: Error, CustomStringConvertible {
     }
 }
 
-private struct InvalidModelType: Error, CustomStringConvertible {
+private struct InvalidModelTypeError: Error, CustomStringConvertible {
     let path: Path
 
     var description: String {

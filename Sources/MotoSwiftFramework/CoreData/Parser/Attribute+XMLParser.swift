@@ -28,13 +28,13 @@ private extension AttributeType {
 
     init(stringValue: String) throws {
         guard let type = AttributeType.typesMapping[stringValue] else {
-            throw UnknownAttributeType(type: stringValue)
+            throw UnknownAttributeTypeError(type: stringValue)
         }
         self = type
     }
 }
 
-private struct UnknownAttributeType: Error, CustomStringConvertible {
+private struct UnknownAttributeTypeError: Error, CustomStringConvertible {
     let type: String
 
     var description: String {
