@@ -10,17 +10,17 @@ import Foundation
 // swiftlint:disable trailing_newline
 // swiftlint:disable implicit_return
 extension PropertyClass {
-   @objc public class var entityName: String {
-      return "Property"
-   }
+    @objc public class var entityName: String {
+        return "Property"
+    }
 
-   @nonobjc
-   public class func fetchRequest() -> NSFetchRequest<PropertyClass> {
-       return NSFetchRequest<PropertyClass>(entityName: entityName)
-   }
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<PropertyClass> {
+        return NSFetchRequest<PropertyClass>(entityName: entityName)
+    }
 
-   @NSManaged public var name: String
-   @NSManaged public var value: String
-   @NSManaged public var types: AllTypesClass?
+    @NSManaged public var name: String
+    @NSManaged public var value: String
+    @NSManaged public var types: AllTypesClass?
 }
 

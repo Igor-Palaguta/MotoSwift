@@ -1,13 +1,9 @@
-import Commander
+import ArgumentParser
 import Foundation
 import PathKit
 
-extension Path: ArgumentConvertible {
-    public init(parser: ArgumentParser) throws {
-        if let value = parser.shift() {
-            self.init(value)
-        } else {
-            throw ArgumentError.missingValue(argument: nil)
-        }
+extension Path: ExpressibleByArgument {
+    public init?(argument: String) {
+        self.init(argument)
     }
 }

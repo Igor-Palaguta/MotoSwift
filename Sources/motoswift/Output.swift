@@ -14,7 +14,7 @@ enum Output {
         }
     }
 
-    func write(text: String) throws {
+    func write(_ text: String) throws {
         switch self {
         case .console:
             print(text)
