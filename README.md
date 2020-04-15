@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Igor-Palaguta/MotoSwift.svg?branch=master)](https://travis-ci.org/Igor-Palaguta/MotoSwift)
+
 # MotoSwift. Managed Objects to Swift.
 Generates Swift NSManagedObject subclasses.
 
